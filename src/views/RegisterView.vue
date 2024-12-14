@@ -1,14 +1,14 @@
 <template>
     <div>
         <h1>Registar Conta</h1>
-        <form >
+        <form @submit.prevent="register(name, email, password)" >
             <label for="userName" >Nome Utilizador</label><br>
             <input type="text" placeholder="Nome Utilizador" id="userName" v-model="name" required><br><br>
             <label for="userEmail" >Email</label><br>
             <input type="email" placeholder="Email" id="userEmail" v-model="email" required><br><br>
             <label for="password">Password</label><br>
             <input type="password" placeholder="password" id="password" v-model="password" required><br><br>
-            <button type="submit" @click="register(name, email, password)">Registar</button>
+            <button type="submit">Registar</button>
         </form>
     </div>
 </template>

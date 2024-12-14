@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { useRouter } from 'vue-router';
 
 export const useUsersStore = defineStore('users', {
     state: () => ({
@@ -19,6 +20,8 @@ export const useUsersStore = defineStore('users', {
                 const passCheck = nameCheck.password == password;
                 if(passCheck){
                     alert('Login efetuado com sucesso')
+                    const router = useRouter();
+                    router.push('/tickets');
                     
                 } else{
                     alert('Password incorreta')
