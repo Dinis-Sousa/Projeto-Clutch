@@ -16,17 +16,24 @@
 
 <script>
 import { useUsersStore } from '@/stores/users';
+import {useRouter} from 'vue-router'
 export default {
+    
     data() {
         return {
             name: '',
             password: '',
             store: useUsersStore(),
+            router: useRouter()
         }
     },
     methods: {
         submit(name, password) {
             this.store.checkLogin(name, password);
+            console.log(this.store.isAuthenticated)
+            if (this.store.isAuthenticated){
+                this.router.push('/tickets')
+            }
         }
     }
 }

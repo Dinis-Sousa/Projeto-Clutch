@@ -15,6 +15,7 @@
 
 <script>
 import { useUsersStore } from '@/stores/users';
+import {useRouter} from 'vue-router'
 export default {
     data() {
         return {
@@ -22,11 +23,13 @@ export default {
             email:'',
             password: '',
             store: useUsersStore(),
+            router: useRouter(),
         }
     },
     methods: {
         register(name, email, password){
             this.store.addUser(name,email, password)
+            this.router.push('/login')
         }
     }
 }

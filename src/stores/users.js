@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
-import { useRouter } from 'vue-router';
 
 export const useUsersStore = defineStore('users', {
     state: () => ({
+        isAuthenticated: false,
+        isAdmin:false,
         users: [
             {
                 id:0,
@@ -19,10 +20,13 @@ export const useUsersStore = defineStore('users', {
             if(nameCheck){
                 const passCheck = nameCheck.password == password;
                 if(passCheck){
-                    alert('Login efetuado com sucesso')
-                    const router = useRouter();
-                    router.push('/tickets');
-                    
+                    alert('Login efetuado com sucesso');
+                    this.isAuthenticated = true
+                    if(nameCheck.id === 0) {
+                        this.isAdmin = true
+                    } else {
+                        this.isAdmin = false
+                    }
                 } else{
                     alert('Password incorreta')
                 }
@@ -30,13 +34,17 @@ export const useUsersStore = defineStore('users', {
                 alert('Nome do Utilizador não existe!')
             }
         },
+        logout(){
+            this.isAuthenticated = false
+        },
         addUser(name, email, password) {
             const user = {
                 id: this.idUser(),
                 name: name,
                 email: email,
                 password: password,
-                blocked: false
+                blocked: false,
+                isAdmin: false,
             }
             this.users.push(user)
             alert('Registado com sucesso!')

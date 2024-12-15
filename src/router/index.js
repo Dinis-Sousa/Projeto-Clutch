@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { useUsersStore } from '@/stores/users';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -12,7 +12,8 @@ const router = createRouter({
     {
       path: '/tickets',
       name: 'tickets',
-      component: () => import('../views/TicketsView.vue')
+      component: () => import('../views/TicketsView.vue'),
+      meta: {isAuthenticated: true}
     },
     {
       path:'/adminTickets',
@@ -30,6 +31,15 @@ const router = createRouter({
       component: () => import('../views/RegisterView.vue')
     }
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  const usersStore = useUsersStore();
+  if(to.meta.isAuthenticated && usersStore.isAuthenticated === false){
+    next('/login')
+    } else {
+      next();
+    }
 })
 
 export default router

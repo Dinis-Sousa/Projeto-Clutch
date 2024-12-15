@@ -1,4 +1,5 @@
 <template>
+    <button @click="logout()" class="logoutBtn">Logout</button>
     <div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center">
         <h1 class="text-center mb-4">Tickets Disponíveis</h1>
         <div class="row justify-content-center">
@@ -14,7 +15,7 @@
             </div>
         </div>
     </div>
-    <router-link to="/adminTickets">
+    <router-link to="/adminTickets" v-if="this.store1.isAdmin === true">
         <span> Admin ticket</span>
     </router-link>
     <router-link to="/login">
@@ -25,20 +26,31 @@
 
 <script>
 import { useTicketsStore } from '@/stores/tickets';
+import {useUsersStore} from '@/stores/users';
+import {useRouter} from 'vue-router'
 export default {
     data() {
         return {
-            store: useTicketsStore()
+            store: useTicketsStore(),
+            store1: useUsersStore(),
+            router:useRouter()
         }
     },
     methods: {
         buyTicket(id) {
             this.store.buyTicket(id);
         },
-
+        logout(){
+            this.store1.logout();
+            this.router.push('/login')
+        }
     },
 
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.logoutBtn{
+    width:100px;
+    height:50px;
+}</style>
