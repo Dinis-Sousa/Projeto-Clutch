@@ -58,7 +58,7 @@
 body{
     width: 100vh;
     margin-top:100px;
-    margin-bottom: 0px; 
+    margin-bottom: 0px;
 }
 .footerBackground{
     height:52vh;

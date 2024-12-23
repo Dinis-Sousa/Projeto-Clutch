@@ -1,6 +1,8 @@
 <template>
     <nav class="navBarFlex">
-        <img class="navImg" src="../assets/images/Banana_cone_de_mira_estilizado_Descrição__Um_logotipo_com_f3a1d8f7-d031-4e5e-b331-e5a8f41e8720 1.png" alt="logótipo">
+        <router-link to="/">
+            <img class="navImg" src="../assets/images/Banana_cone_de_mira_estilizado_Descrição__Um_logotipo_com_f3a1d8f7-d031-4e5e-b331-e5a8f41e8720 1.png" alt="logótipo">
+        </router-link>    
         <ul>
         <li><router-link class="navRouterLinkDec" to="/">Evento</router-link></li>
         <li><router-link class="navRouterLinkDec" to="/about">Áreas</router-link></li>
@@ -8,7 +10,7 @@
         <li><router-link class="navRouterLinkDec" to="/contact">Sobre</router-link></li>
         <li><router-link class="navRouterLinkDec" to="/login">Perfil</router-link></li>
         </ul>
-        <router-link to="/login"><button class="navLoginBtn">Login</button></router-link>    
+        <router-link to="/login"><button :class="{active: isActivePage}" class="navLoginBtn">Login</button></router-link>    
     </nav>
     
 </template>
@@ -16,6 +18,16 @@
 <script>
     export default {
         name:"MyNavBar",
+        data() {
+            return {
+                currentRoute:this.$route.path,
+            }
+        },
+        computed: {
+            isActivePage(){
+                return this.$route.path === '/login';
+            }
+        }
     }
 </script>
 
@@ -38,7 +50,7 @@ body{
     height:176px;
 }
 .navBarFlex ul{
-    width: 1000px;
+    width: 1200px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -55,9 +67,13 @@ body{
 .navLoginBtn{
     width:156px;
     height:62px;
-    border: 1px solid transparent;
+    border: 1px solid #7A7373;
     border-radius:50px;
-    background-color: #2E2E91;
+    background-color: black;
     color:white; 
+}
+.navLoginBtn.active{
+    background-color: #2E2E91;
+    border: 1px solid transparent;
 }
 </style>
