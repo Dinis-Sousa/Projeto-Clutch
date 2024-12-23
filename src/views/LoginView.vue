@@ -83,6 +83,7 @@ input{
     color:white;
     background-color: black;
     font-size: 18px;
+    padding: 0px 0px 0px 10px;
 
 }
 label{

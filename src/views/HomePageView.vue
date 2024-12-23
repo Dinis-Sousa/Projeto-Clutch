@@ -12,6 +12,10 @@
             <button class="homeBtn">Veja o que temos planeado</button>
         </router-link>
     </div>
+    <div class="homeEvento">
+        <h1>Evento</h1>
+        <p @mouseover="hover = true" @mouseleave="hover = false" :class="{ 'hovered': hover }">ver mais</p>
+    </div>
     <MyFooter />
 </template>
 
@@ -22,14 +26,22 @@ import MyFooter from '@/components/footer.vue'
         components: {
             MyNavBar,
             MyFooter,
-        }
+        }, 
+        data() {
+            return {
+                hover: false,
+            }
+        },
         
     }
 </script>
 
 <style>
+:root{
+    --hBackground: linear-gradient(to right, white, ##0000CD);
+}
 body{
-    background-position: 50% 1000px;
+    background-position: 50% 900px;
 }
 .mainH1{
     margin-top:100px;
@@ -102,5 +114,27 @@ body{
     margin:20px;
     padding:16px 50px;
     font-size:16px;
+}
+.homeEvento{
+    margin-top: 700px;
+}
+.homeEvento h1{
+    font-weight:normal;
+    font-family: 'Host Grotesk';
+    padding:0px;
+    margin: auto auto auto 50px;
+}
+.homeEvento p{
+    text-align: end;
+    font-size: 30px;
+    margin-right:50px;
+    color:white;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.homeEvento p:hover{
+    cursor: pointer;
+    background: linear-gradient(to right, white, #0000CD); 
+    background-clip: text; 
+    color: transparent;
 }
 </style>
