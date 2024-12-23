@@ -1,4 +1,5 @@
 <template>
+    <MyNavBar />
     <table class="table table-dark table-striped">
         <thead>
             <tr>
@@ -41,11 +42,19 @@
         </div>
         <button class="btn btn-dark" @click="modifyTicket(id, name, total, price)">Edit</button>
     </div>
+    <MyFooter/>
 </template>
 
 <script>
 import { useTicketsStore } from '@/stores/tickets';
+import MyNavBar from '@/components/navbar.vue'
+import MyFooter from '@/components/footer.vue'
+
 export default {
+    components: {
+        MyNavBar,
+        MyFooter,
+    },
     data() {
         return {
             id: 0,

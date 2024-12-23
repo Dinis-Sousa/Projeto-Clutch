@@ -1,7 +1,7 @@
 <template>
-    <button @click="logout()" class="logoutBtn">Logout</button>
+    <MyNavBar />
     <div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center">
-        <h1 class="text-center mb-4">Tickets Disponíveis</h1>
+        <h1 class="text-center mb-4" style="margin-top:0px;">Tickets Disponíveis</h1>
         <div class="row justify-content-center">
             <div class="col-md-4 mb-4" v-for="ticket in store.tickets" :key="ticket.id">
                 <div class="card custom-card">
@@ -15,12 +15,8 @@
             </div>
         </div>
     </div>
-    <router-link to="/adminTickets" v-if="this.store1.isAdmin === true">
-        <span> Admin ticket</span>
-    </router-link>
-    <router-link to="/login">
-        <span>Login</span>
-    </router-link>
+    <router-link class="ticketsRouterLinkDec" to="/adminTickets" v-if="this.store1.isAdmin === true">Admin ticket</router-link>
+    <MyFooter />
 </template>
 
 
@@ -28,7 +24,14 @@
 import { useTicketsStore } from '@/stores/tickets';
 import {useUsersStore} from '@/stores/users';
 import {useRouter} from 'vue-router'
+import MyNavBar from '@/components/navbar.vue'
+import MyFooter from '@/components/footer.vue'
+
 export default {
+    components: {
+        MyNavBar,
+        MyFooter,
+    },
     data() {
         return {
             store: useTicketsStore(),
@@ -53,4 +56,13 @@ export default {
 .logoutBtn{
     width:100px;
     height:50px;
-}</style>
+}
+.ticketsRouterLinkDec{
+    text-decoration: none;
+    color:white;
+    padding:20px;
+    border: 1px solid transparent;
+    border-radius:50px;
+    background-color: red;
+}
+</style>
