@@ -4,13 +4,13 @@
             <img class="navImg" src="../assets/images/Banana_cone_de_mira_estilizado_Descrição__Um_logotipo_com_f3a1d8f7-d031-4e5e-b331-e5a8f41e8720 1.png" alt="logótipo">
         </router-link>    
         <ul>
-        <li><router-link class="navRouterLinkDec" to="/evento">Evento</router-link></li>
-        <li><router-link class="navRouterLinkDec" to="/areas">Áreas</router-link></li>
-        <li><router-link class="navRouterLinkDec" to="/tickets">Bilhetes</router-link></li>
-        <li><router-link class="navRouterLinkDec" to="/sobre">Sobre</router-link></li>
-        <li><router-link class="navRouterLinkDec" to="/perfil">Perfil</router-link></li>
+        <li><router-link :class="{active: isEventPage}" class="navRouterLinkDec" to="/evento">Evento</router-link></li>
+        <li><router-link :class="{active: isAreasPage}" class="navRouterLinkDec" to="/areas">Áreas</router-link></li>
+        <li><router-link :class="{active: isBilhetesPage}" class="navRouterLinkDec" to="/tickets">Bilhetes</router-link></li>
+        <li><router-link :class="{active: isSobrePage}" class="navRouterLinkDec" to="/sobre">Sobre</router-link></li>
+        <li><router-link :class="{active: isPerfilPage}" class="navRouterLinkDec" to="/perfil">Perfil</router-link></li>
         </ul>
-        <router-link to="/login"><button :class="{active: isActivePage}" class="navLoginBtn">Login</button></router-link>    
+        <router-link to="/login"><button :class="{active: isLoginPage}" class="navLoginBtn">Login</button></router-link>    
     </nav>
     
 </template>
@@ -24,9 +24,24 @@
             }
         },
         computed: {
-            isActivePage(){
+            isLoginPage(){
                 return this.$route.path === '/login';
-            }
+            },
+            isEventPage(){
+                return this.$route.path === '/evento';
+            },
+            isAreasPage(){
+                return this.$route.path === '/areas';
+            },
+            isBilhetesPage(){
+                return this.$route.path === '/tickets';
+            },
+            isSobrePage(){
+                return this.$route.path === '/sobre';
+            },
+            isPerfilPage(){
+                return this.$route.path === '/perfil';
+            },
         }
     }
 </script>
@@ -63,6 +78,12 @@ body{
 .navRouterLinkDec{
     text-decoration: none;
     color:white;
+}
+.navRouterLinkDec.active{
+    background-color: #2E2E91;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    padding: 2px 20px;
 }
 .navLoginBtn{
     width:156px;
