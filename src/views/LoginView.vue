@@ -9,7 +9,7 @@
             <input type="password" placeholder="Escreve a tua password" id="password" v-model="password"><br><br>
             <button type="submit">Login</button>
         </form>
-        <router-link to="/register" class="routerLinkDec">Não tens uma conta?</router-link>
+        <router-link to="/registar" class="routerLinkDec">Não tens uma conta?</router-link>
     </div>
     <MyFooter />
 </template>
@@ -49,14 +49,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@400..900&display=swap');
 body{
-    background: black;
-    background-image: url("../assets/images/pngfind.com-linhas-png-5482397 3.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
     background-position: 50% 500px;
-    color:white;
-    font-family: 'host grotesk';
-    margin: 0px;
 }
 .navBar{
     height:100px;
@@ -96,11 +89,24 @@ form button{
     height:5vh;
     font-size:20px;
     padding:10px;
+    background-color: white;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+form button:hover{
+    background: linear-gradient(to right, white, #9F00FF);
+    transform: scale(1.05);
 }
 .routerLinkDec {
   text-decoration: none;
   margin:30px;
   color:white;
   font-size:18px;
+  transition: transform 0.2s ease;
+}
+.routerLinkDec:hover{
+    background: linear-gradient(to right, white,#0000CD);
+    background-clip: text; 
+    color: transparent;
+    transform: scale(1.05);
 }
 </style>

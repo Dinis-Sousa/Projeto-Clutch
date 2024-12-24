@@ -14,7 +14,7 @@
     </div>
     <div class="homeEvento">
         <h1>Evento</h1>
-        <p @mouseover="hover = true" @mouseleave="hover = false" :class="{ 'hovered': hover }">ver mais</p>
+        <div class="relVerMais"><router-link to="/registar" class="routerLinkDecVerMais">ver mais</router-link></div>
         <div class="slideContainer">
             <div class="slideWrapper">
                 <div class="wrapperHolder">
@@ -28,7 +28,7 @@
     </div>
     <div class="homeAreas">
         <h1>Areas</h1>
-        <p @mouseover="hover = true" @mouseleave="hover = false" :class="{ 'hovered': hover }">ver mais</p>
+        <div class="relVerMais"><router-link to="/registar" class="routerLinkDecVerMais">ver mais</router-link></div>
         <div class="slideContainer Areas">
             <div class="slideWrapper Areas">
                 <div class="wrapperHolder Areas">
@@ -45,18 +45,37 @@
         <h1 id="timerTime">12:30:50</h1>
     </div>
     <div class="backgroundCoiso">
-        <button id="homeComprarBilhete">Comprar bilhete</button>
+        <button id="homeComprarBilhete" @click="TogglePopUp('buttonTrigger')">Comprar bilhete</button>
     </div>
+    <MyPopUP v-if="popUpTriggers.buttonTrigger">
+    </MyPopUP>
     <MyFooter />
 </template>
 
 <script>
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
+import MyPopUP from '@/components/PopUp.vue'
+import {ref} from 'vue'
     export default {
+        setup() {
+            const popUpTriggers = ref({
+                buttonTrigger: false,
+            })
+            const TogglePopUp = (trigger) => {
+                popUpTriggers.value[trigger] = !popUpTriggers.value[trigger]
+            }
+
+            return {
+                popUpTriggers,
+                TogglePopUp
+            }
+
+        },
         components: {
             MyNavBar,
             MyFooter,
+            MyPopUP,
         }, 
         data() {
             return {
@@ -68,11 +87,36 @@ import MyFooter from '@/components/footer.vue'
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@400..900&display=swap');
 :root{
     --hBackground: linear-gradient(to right, white, #0000CD);
 }
 body{
+    background: black;
+    background-image: url("../assets/images/pngfind.com-linhas-png-5482397 3.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
     background-position: 50% 900px;
+    color:white;
+    font-family: 'host grotesk';
+    margin: 0px;
+}
+h1{
+    font-family: 'Orbitron';
+    font-size: 70px;
+    font-weight: bold;
+    margin: auto auto 100px auto;
+}
+.routerLinkDec {
+  text-decoration: none;
+  margin:30px;
+  color:white;
+  font-size:18px;
+}
+.navBar{
+    height:100px;
+    width: 100vh;
 }
 .mainH1{
     margin-top:100px;
@@ -162,14 +206,20 @@ body{
     padding:0px;
     margin: auto auto auto 50px;
 }
-.homeEvento p{
-    text-align: end;
-    font-size: 30px;
-    margin-right:50px;
-    color:white;
-    transition: background 0.3s ease, color 0.3s ease;
+.relVerMais{
+    position: relative;
 }
-.homeEvento p:hover{
+.routerLinkDecVerMais{
+    text-decoration: none;
+    font-size: 30px;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    color:white;
+    transition: color 0.3s ease;
+}
+.routerLinkDecVerMais:hover{
     cursor: pointer;
     background: linear-gradient(to right, white, #0000CD); 
     background-clip: text; 
@@ -292,10 +342,9 @@ body{
     margin-top:400px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding:0px;
-    height:70vh;
 }
 #timerText{
     font-family: 'Orbitron';
@@ -307,6 +356,7 @@ body{
     font-family: 'Orbitron';
     font-weight: lighter;
     font-size: 170px;
+    padding-bottom:0px;
 }
 .backgroundCoiso{
     position: relative;

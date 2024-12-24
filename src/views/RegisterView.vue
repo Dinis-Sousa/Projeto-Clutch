@@ -47,5 +47,52 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+body{
+    background: black;
+    background-position: 50% 500px;
+    color:white;
+    font-family: 'host grotesk';
+    margin: 0px;
+}
+h1{
+    font-family: 'Orbitron';
+    font-size: 70px;
+    font-weight: bold;
+    margin: auto auto 100px auto;
+}
+input{
+    border: 1px solid #7A7373;
+    height:5vh;
+    width:30vh;
+    border-radius:50px;
+    color:white;
+    background-color: black;
+    font-size: 18px;
+    padding: 0px 0px 0px 10px;
 
+}
+label{
+    font-size: 25px;
+    padding-bottom:20px;
+}
+.flexDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+
+}
+form button{
+    width:30vh;
+    border-radius:50px;
+    height:5vh;
+    font-size:20px;
+    padding:10px;
+    background-color: white;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+form button:hover{
+    background: linear-gradient(to right, white, #9F00FF);
+    transform: scale(1.05);
+}
 </style>

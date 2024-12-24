@@ -8,7 +8,6 @@ const router = createRouter({
       path: '/',
       name: 'HomePage',
       component: () => import('../views/HomePageView.vue'),
-      meta:{isAuthenticated: true}
     },
     {
       path: '/tickets',
@@ -28,8 +27,8 @@ const router = createRouter({
       component: () => import('../views/LoginView.vue'),
     },
     {
-      path:'/register',
-      name: 'register',
+      path:'/registar',
+      name: 'registar',
       component: () => import('../views/RegisterView.vue')
     },
     {
