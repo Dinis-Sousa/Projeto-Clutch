@@ -4,10 +4,10 @@
             <h1>Site Links</h1>
             <div class="firstFlex">
                 <div class="secondFlex1">
-                    <router-link class="footerRouterLinkDec" to="/berbigao">About us</router-link>
-                    <router-link class="footerRouterLinkDec" to="/berbigao">Eventos</router-link>
-                    <router-link class="footerRouterLinkDec" to="/berbigao">Áreas</router-link>
-                    <router-link class="footerRouterLinkDec" to="/berbigao">Bilhetes</router-link>
+                    <router-link class="footerRouterLinkDec" to="/sobre">About us</router-link>
+                    <router-link class="footerRouterLinkDec" to="/evento">Eventos</router-link>
+                    <router-link class="footerRouterLinkDec" to="/areas">Áreas</router-link>
+                    <router-link class="footerRouterLinkDec" to="/tickets">Bilhetes</router-link>
                 </div>
                 <div class="secondFlex2">
                     <router-link class="footerRouterLinkDec" to="/berbigao">Agenda</router-link>
@@ -17,7 +17,9 @@
                 </div>
             </div>
             <div class="thirdFlex">
-                <img class="FooterImg" src="../assets/images/Banana_cone_de_mira_estilizado_Descrição__Um_logotipo_com_f3a1d8f7-d031-4e5e-b331-e5a8f41e8720 1.png" alt="logótipo">
+                <router-link to="/">
+                    <img class="FooterImg" src="../assets/images/Banana_cone_de_mira_estilizado_Descrição__Um_logotipo_com_f3a1d8f7-d031-4e5e-b331-e5a8f41e8720 1.png" alt="logótipo">
+                </router-link>
                 <div class="insideFlex">
                     <img src="../assets/images/Line 96.png" alt="linhaFooter">
                     <span>Segue-nos em:</span>

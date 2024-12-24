@@ -9,12 +9,28 @@
     </div>
     <div class="mainBtn">
         <router-link to="/">
-            <button class="homeBtn">Veja o que temos planeado</button>
+            <button class="homeBtn" >Veja o que temos planeado</button>
         </router-link>
     </div>
     <div class="homeEvento">
         <h1>Evento</h1>
         <p @mouseover="hover = true" @mouseleave="hover = false" :class="{ 'hovered': hover }">ver mais</p>
+        <div class="slideImgs">
+            <div class="slideTrack">
+                <div class="slide">
+                    <img src="../assets/images/image 24.png" alt="image1">
+                </div>
+                <div class="slide">
+                    <img src="../assets/images/image 25.png" alt="image2">
+                </div>
+                <div class="slide">
+                    <img src="../assets/images/image 29.png" alt="image3">
+                </div>
+                <div class="slide">
+                    <img src="../assets/images/image 30.png" alt="image4">
+                </div>
+            </div>
+        </div>
     </div>
     <MyFooter />
 </template>
@@ -100,9 +116,15 @@ body{
     border-radius: 50px;
     border: 2px solid #0000FF;
     background:transparent;
-    color:white;
+    color:#7A7373;
     padding: 10px;
     text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+.homeBtn:hover{
+    color:white;
+    transform: scale(1.1);
+    cursor: pointer;
 }
 .mainBtn{
     margin-top: 200px;
@@ -137,4 +159,10 @@ body{
     background-clip: text; 
     color: transparent;
 }
+.slideImgs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 </style>

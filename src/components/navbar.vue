@@ -4,11 +4,11 @@
             <img class="navImg" src="../assets/images/Banana_cone_de_mira_estilizado_Descrição__Um_logotipo_com_f3a1d8f7-d031-4e5e-b331-e5a8f41e8720 1.png" alt="logótipo">
         </router-link>    
         <ul>
-        <li><router-link class="navRouterLinkDec" to="/">Evento</router-link></li>
-        <li><router-link class="navRouterLinkDec" to="/about">Áreas</router-link></li>
-        <li><router-link class="navRouterLinkDec" to="/contact">Bilhetes</router-link></li>
-        <li><router-link class="navRouterLinkDec" to="/contact">Sobre</router-link></li>
-        <li><router-link class="navRouterLinkDec" to="/login">Perfil</router-link></li>
+        <li><router-link class="navRouterLinkDec" to="/evento">Evento</router-link></li>
+        <li><router-link class="navRouterLinkDec" to="/areas">Áreas</router-link></li>
+        <li><router-link class="navRouterLinkDec" to="/tickets">Bilhetes</router-link></li>
+        <li><router-link class="navRouterLinkDec" to="/sobre">Sobre</router-link></li>
+        <li><router-link class="navRouterLinkDec" to="/perfil">Perfil</router-link></li>
         </ul>
         <router-link to="/login"><button :class="{active: isActivePage}" class="navLoginBtn">Login</button></router-link>    
     </nav>

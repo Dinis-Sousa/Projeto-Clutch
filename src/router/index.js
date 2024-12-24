@@ -20,6 +20,7 @@ const router = createRouter({
       path:'/adminTickets',
       name:'adminTickets',
       component: () => import('../views/AdminTicketsView.vue'),
+      meta:{isAuthenticated:true, isAdmin: true}
     },
     {
       path: '/login',
@@ -30,7 +31,31 @@ const router = createRouter({
       path:'/register',
       name: 'register',
       component: () => import('../views/RegisterView.vue')
-    }
+    },
+    {
+      path:'/evento',
+      name:'evento',
+      component: () => import('../views/EventoPageView.vue'),
+      meta: {isAuthenticated:true}
+    },
+    {
+      path:'/areas',
+      name:'areas',
+      component: () => import('../views/AreasPageView.vue'),
+      meta: {isAuthenticated:true}
+    },
+    {
+      path:'/sobre',
+      name:'sobre',
+      component: () => import('../views/SobreView.vue'),
+      meta: {isAuthenticated:true}
+    },
+    {
+      path:'/perfil',
+      name:'perfil',
+      component: () => import('../views/PerfilView.vue'),
+      meta: {isAuthenticated:true}
+    },
   ],
 })
 
