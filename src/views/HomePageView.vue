@@ -44,6 +44,9 @@
         <h1 id="timerText">Adquire já o teu<br>bilhete!</h1>
         <h1 id="timerTime">12:30:50</h1>
     </div>
+    <div class="backgroundCoiso">
+        <button id="homeComprarbilhete">Comprar bilhete</button>
+    </div>
     <MyFooter />
 </template>
 
@@ -296,7 +299,7 @@ body{
 }
 #timerText{
     font-family: 'Orbitron';
-    font-weight: 'bold';
+    font-weight: bold;
     font-size: 100px;
     text-align: center;
 }
@@ -304,5 +307,28 @@ body{
     font-family: 'Orbitron';
     font-weight: lighter;
     font-size: 200px;
+}
+.backgroundCoiso{
+    position: relative;
+    height:70vh;
+    background-image: url("../assets/images/pngfind.com-linhas-png-5482397 2.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 50% auto;
+    z-index: 1;
+    color:white;
+}
+#homeComprarbilhete{
+    border: 1px solid white;
+    border-radius:50px;
+    background-color: black;
+    color:white;
+    font-weight: bold;
+    font-size:20px;
+    padding:10px 30px;
+    position: absolute;
+    left:44%;
+    top:65%;
+    transform: translateY(-50%)
 }
 </style>
