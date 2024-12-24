@@ -15,22 +15,34 @@
     <div class="homeEvento">
         <h1>Evento</h1>
         <p @mouseover="hover = true" @mouseleave="hover = false" :class="{ 'hovered': hover }">ver mais</p>
-        <div class="slideImgs">
-            <div class="slideTrack">
-                <div class="slide">
-                    <img src="../assets/images/image 24.png" alt="image1">
-                </div>
-                <div class="slide">
-                    <img src="../assets/images/image 25.png" alt="image2">
-                </div>
-                <div class="slide">
-                    <img src="../assets/images/image 29.png" alt="image3">
-                </div>
-                <div class="slide">
-                    <img src="../assets/images/image 30.png" alt="image4">
+        <div class="slideContainer">
+            <div class="slideWrapper">
+                <div class="wrapperHolder">
+                    <div id="sliderImg1"></div>
+                    <div id="sliderImg2"></div>
+                    <div id="sliderImg3"></div>
+                    <div id="sliderImg4"></div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="homeAreas">
+        <h1>Areas</h1>
+        <p @mouseover="hover = true" @mouseleave="hover = false" :class="{ 'hovered': hover }">ver mais</p>
+        <div class="slideContainer Areas">
+            <div class="slideWrapper Areas">
+                <div class="wrapperHolder Areas">
+                    <div id="sliderImg5"></div>
+                    <div id="sliderImg6"></div>
+                    <div id="sliderImg7"></div>
+                    <div id="sliderImg8"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="timerDiv">
+        <h1 id="timerText">Adquire já o teu<br>bilhete!</h1>
+        <h1 id="timerTime">12:30:50</h1>
     </div>
     <MyFooter />
 </template>
@@ -54,7 +66,7 @@ import MyFooter from '@/components/footer.vue'
 
 <style>
 :root{
-    --hBackground: linear-gradient(to right, white, ##0000CD);
+    --hBackground: linear-gradient(to right, white, #0000CD);
 }
 body{
     background-position: 50% 900px;
@@ -112,19 +124,20 @@ body{
         transform: translateY(0);
     }
 }   
-.homeBtn{
+.homeBtn {
     border-radius: 50px;
     border: 2px solid #0000FF;
-    background:transparent;
-    color:#7A7373;
+    background: transparent;
+    color: #7A7373;
     padding: 10px;
     text-align: center;
-    transition: transform 0.3s ease-in-out;
-}
-.homeBtn:hover{
-    color:white;
-    transform: scale(1.1);
     cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s ease, background-color 0.3s ease;
+}
+
+.homeBtn:hover {
+    color: white;
+    transform: scale(1.1);
 }
 .mainBtn{
     margin-top: 200px;
@@ -159,10 +172,137 @@ body{
     background-clip: text; 
     color: transparent;
 }
-.slideImgs{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.slideContainer{
+    position: relative;
 }
-
+.slideWrapper{
+    width: 70vw;
+    height: 45vh;
+    box-shadow: 10px 10px 20px white;
+    margin: 5rem auto;
+    overflow: hidden;
+}
+.wrapperHolder{
+    display:grid;
+    grid-template-columns: repeat(4, 100%);
+    height:100%;
+    width:50%;
+    animation: slider 10s ease-in-out infinite alternate;
+}
+#sliderImg1{
+    background-image: url('../assets/images/image 24.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 100%;
+    width: 35vw;
+    height: 45vh;
+    object-fit: cover;
+}
+#sliderImg2{
+    background-image: url('../assets/images/image 25.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 100%;
+    width: 35vw;
+    height: 45vh;
+    object-fit: cover;
+}
+#sliderImg3{
+    background-image: url('../assets/images/image 29.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 100%;
+    width: 35vw;
+    height: 45vh;
+    object-fit: cover;
+}
+#sliderImg4{
+    background-image: url('../assets/images/image 30.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 100%;
+    width: 35vw;
+    height: 45vh;
+    object-fit: cover;
+}
+@keyframes slider {
+    0% { transform: translateX(-20%); }
+    50% { transform: translateX(-180%); }
+    100% { transform: translateX(-20%); }
+}
+.homeAreas h1{
+    font-weight:normal;
+    font-family: 'Host Grotesk';
+    padding:0px;
+    margin: auto auto auto 50px;
+}
+.homeAreas p{
+    text-align: end;
+    font-size: 30px;
+    margin-right:50px;
+    color:white;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.homeAreas p:hover{
+    cursor: pointer;
+    background: linear-gradient(to right, white, #0000CD); 
+    background-clip: text; 
+    color: transparent;
+}
+#sliderImg5{
+    background-image: url('../assets/images/image 3.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 100%;
+    width: 35vw;
+    height: 45vh;
+    object-fit: cover;
+}
+#sliderImg6{
+    background-image: url('../assets/images/image 4.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 100%;
+    width: 35vw;
+    height: 45vh;
+    object-fit: cover;
+}
+#sliderImg7{
+    background-image: url('../assets/images/image 31.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 100%;
+    width: 35vw;
+    height: 45vh;
+    object-fit: cover;
+}
+#sliderImg8{
+    background-image: url('../assets/images/image 32.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 100%;
+    width: 35vw;
+    height: 45vh;
+    object-fit: cover;
+}
+.timerDiv{
+    margin-top:400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding:0px;
+    height:70vh;
+}
+#timerText{
+    font-family: 'Orbitron';
+    font-weight: 'bold';
+    font-size: 100px;
+    text-align: center;
+}
+#timerTime{
+    font-family: 'Orbitron';
+    font-weight: lighter;
+    font-size: 200px;
+}
 </style>
