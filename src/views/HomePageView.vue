@@ -45,7 +45,7 @@
         <h1 id="timerTime">12:30:50</h1>
     </div>
     <div class="backgroundCoiso">
-        <button id="homeComprarbilhete">Comprar bilhete</button>
+        <button id="homeComprarBilhete">Comprar bilhete</button>
     </div>
     <MyFooter />
 </template>
@@ -300,25 +300,25 @@ body{
 #timerText{
     font-family: 'Orbitron';
     font-weight: bold;
-    font-size: 100px;
+    font-size: 80px;
     text-align: center;
 }
 #timerTime{
     font-family: 'Orbitron';
     font-weight: lighter;
-    font-size: 200px;
+    font-size: 170px;
 }
 .backgroundCoiso{
     position: relative;
-    height:70vh;
+    height:80vh;
     background-image: url("../assets/images/pngfind.com-linhas-png-5482397 2.png");
     background-repeat: no-repeat;
     background-size: 100% auto;
-    background-position: 50% auto;
+    background-position: 0% auto 50% auto;
     z-index: 1;
     color:white;
 }
-#homeComprarbilhete{
+#homeComprarBilhete{
     border: 1px solid white;
     border-radius:50px;
     background-color: black;
@@ -328,7 +328,49 @@ body{
     padding:10px 30px;
     position: absolute;
     left:44%;
-    top:65%;
+    top:60%;
     transform: translateY(-50%)
+}
+#homeComprarBilhete:after{
+    content:"";
+    z-index: -1;
+    position: absolute;
+    width:100%;
+    height:100%;
+    background-color: black;
+    border-radius: 50px;
+    left:0%;
+    top:0%;
+}
+#homeComprarBilhete:before{
+    content: "";
+    background: linear-gradient(45deg, #FF0000, #FF7300, #FFFB00, #48FF00, #00FFD5, #002BFF, #FF00C8, #FF0000);
+    position: absolute;
+    top:-2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width:calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    opacity: 1;
+}
+@keyframes glowing {
+    0%{background-position: 0 0;}
+    50%{background-position: 400% 0;}
+    100%{background-position: 0 0;}
+}
+#homeComprarBilhete:hover::before{
+    opacity: 1;
+}
+#homeComprarBilhete:hover::after{
+    background: transparent;
+}
+#homeComprarBilhete:active{
+    color:black;
+    font-weight: bold;
 }
 </style>
