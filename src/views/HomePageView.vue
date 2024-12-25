@@ -42,7 +42,7 @@
     </div>
     <div class="timerDiv">
         <h1 id="timerText">Adquire já o teu<br>bilhete!</h1>
-        <h1 id="timerTime">12:30:50</h1>
+        <h1 id="timerTime">{{ hours }}:{{ minutes }}:{{ seconds }}</h1>
     </div>
     <div class="backgroundCoiso">
         <button id="homeComprarBilhete" @click="checkLogin">Comprar bilhete</button>
@@ -65,12 +65,28 @@ import {useRouter} from 'vue-router'
                 buttonTrigger: false,
                 store: useUsersStore(),
                 router: useRouter(),
+                totalSeconds: 12 * 60 * 60,
+                timer: null,
             }
         },
         components: {
             MyNavBar,
             MyFooter,
             MyPopUP,
+        },
+        computed: {
+            hours() {
+                const hours = Math.floor(this.totalSeconds / 3600);
+                return hours < 10 ? `0${hours}` : hours;
+            },
+            minutes() {
+                const minutes = Math.floor((this.totalSeconds % 3600) / 60);
+                return minutes < 10 ? `0${minutes}` : minutes;
+            },
+            seconds() {
+                const seconds = this.totalSeconds % 60;
+                return seconds < 10 ? `0${seconds}` : seconds;
+            }       
         }, 
         methods: {
             checkLogin() {
@@ -90,8 +106,22 @@ import {useRouter} from 'vue-router'
                 el.style.transform = 'translateY(0)';
             done();
             },
-        }
-        
+            startCountdown() {
+                this.timer = setInterval(() => {
+                if (this.totalSeconds > 0) {
+                    this.totalSeconds -= 1;
+                } else {
+                    clearInterval(this.timer);
+                }
+                }, 1000);
+            }
+        },
+        mounted() {
+            this.startCountdown();
+        },
+        beforeDestroy() {
+            clearInterval(this.timer);
+        }   
     }
 </script>
 
