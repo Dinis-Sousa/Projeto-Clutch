@@ -60,6 +60,12 @@ const router = createRouter({
       component: () => import('../views/AgendaView.vue'),
       meta: {isAuthenticated:true}
     },
+    {
+      path:'/carrinho',
+      name:'carrinho',
+      component: () => import('../views/CarrinhoView.vue'),
+      meta: {isAuthenticated:true}
+    },
   ],
 })
 

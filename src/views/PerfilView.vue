@@ -74,8 +74,7 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    
+    padding: 20px;    
 }
 .perfilInner{
     display: flex;
@@ -116,6 +115,10 @@ export default {
     border-radius: 50px;
     font-weight: bold;
     font-size: 1.3em;
+    transition: transform .3 ease-in-out;
+}
+.perfilInfo button:hover{
+    transform: scale(1.2);
 }
 .perfilCenas{
     display: flex;
@@ -158,6 +161,7 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
+    z-index: 0;
 }
 .cenasdoCarrinho button::after{
     content: '';
