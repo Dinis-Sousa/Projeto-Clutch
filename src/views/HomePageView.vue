@@ -12,6 +12,7 @@
             <button class="homeBtn" >Veja o que temos planeado</button>
         </router-link>
     </div>
+    <div class="backgroundCoisoHome"></div>
     <div class="homeEvento">
         <h1>Evento</h1>
         <div class="relVerMais"><router-link to="/evento" class="routerLinkDecVerMais">ver mais</router-link></div>
@@ -133,13 +134,19 @@ import {useRouter} from 'vue-router'
 }
 body{
     background: black;
-    background-image: url("../assets/images/pngfind.com-linhas-png-5482397 3.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: 50% 900px;
     color:white;
     font-family: 'host grotesk';
     margin: 0px;
+}
+.backgroundCoisoHome{
+    position: relative;
+    height:80vh;
+    background-image: url("../assets/images/pngfind.com-linhas-png-5482397 3.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 0% auto 50% auto;
+    z-index: 1;
+    color:white;
 }
 h1{
     font-family: 'Orbitron';
@@ -237,7 +244,7 @@ h1{
     font-size:16px;
 }
 .homeEvento{
-    margin-top: 700px;
+    margin-top: 100px;
 }
 .homeEvento h1{
     font-weight:normal;

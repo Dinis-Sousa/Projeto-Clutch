@@ -1,17 +1,17 @@
 <template>
     <div>
         <MyNavBar />
-        <div class="flexDiv">
-            <h1>Registar</h1>
-            <form @submit.prevent="register(name, email, password)" >
-                <label for="userName" >Nome Utilizador</label><br>
-                <input type="text" placeholder="Nome Utilizador" id="userName" v-model="name" required><br><br>
-                <label for="userEmail" >Email</label><br>
-                <input type="email" placeholder="Email" id="userEmail" v-model="email" required><br><br>
-                <label for="password">Password</label><br>
-                <input type="password" placeholder="password" id="password" v-model="password" required><br><br>
-                <button type="submit">Registar</button>
-            </form>
+        <div class="flexDivReg">
+            <h1>Registar</h1>    
+                <form @submit.prevent="register(name, email, password)" >
+                    <label for="userName" >Nome Utilizador</label><br>
+                    <input type="text" placeholder="Nome Utilizador" id="userName" v-model="name" required><br><br>
+                    <label for="userEmail" >Email</label><br>
+                    <input type="email" placeholder="Email" id="userEmail" v-model="email" required><br><br>
+                    <label for="password">Password</label><br>
+                    <input type="password" placeholder="password" id="password" v-model="password" required><br><br>
+                    <button type="submit">Registar</button>
+                </form>
         </div>
         <MyFooter />
     </div>
@@ -49,7 +49,6 @@ export default {
 <style lang="scss" scoped>
 body{
     background: black;
-    background-position: 50% 500px;
     color:white;
     font-family: 'host grotesk';
     margin: 0px;
@@ -75,12 +74,32 @@ label{
     font-size: 25px;
     padding-bottom:20px;
 }
-.flexDiv{
+.flexDivReg {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+    justify-content: center; 
+    align-items: center;     
+    height: 80vh;
+    position: relative;
+    height:55vh;
+    width:99vw;
+    max-width: 100vw;
+    background-image: url("../assets/images/pngfind.com-linhas-png-5482397 2.png");
+    background-repeat: no-repeat;
+    background-size: 110% 80%;
+    background-position: 100% 20%;
+    color:white;
+      
+}
 
+.flexDiv form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    z-index: 1;
+             
 }
 form button{
     width:30vh;

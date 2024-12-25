@@ -2,14 +2,16 @@
     <MyNavBar />
     <div class="flexDiv">
         <h1>Iniciar Sessão</h1>
-        <form @submit.prevent="submit(name,password)">
-            <label for="userName" >Nome Utilizador</label><br>
-            <input type="text" placeholder="Escreve o teu username" id="userName" v-model="name"><br><br>
-            <label for="password">Password</label><br>
-            <input type="password" placeholder="Escreve a tua password" id="password" v-model="password"><br><br>
-            <button type="submit">Login</button>
-        </form>
-        <router-link to="/registar" class="routerLinkDec">Não tens uma conta?</router-link>
+        <div class="backgroundCoisoLogin">   
+            <form @submit.prevent="submit(name,password)">
+                <label for="userName" >Nome Utilizador</label><br>
+                <input type="text" placeholder="Escreve o teu username" id="userName" v-model="name"><br><br>
+                <label for="password">Password</label><br>
+                <input type="password" placeholder="Escreve a tua password" id="password" v-model="password"><br><br>
+                <button type="submit">Login</button>
+                <router-link to="/registar" class="routerLinkDec">Não tens uma conta?</router-link>
+            </form>
+        </div>
     </div>
     <MyPopUpLogin v-if="isNowLoggedIn"></MyPopUpLogin>
     <MyFooter />
@@ -51,19 +53,33 @@ export default {
 <style> 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@400..900&display=swap');
-body{
-    background-position: 50% 500px;
-}
 .navBar{
-    height:100px;
+    height: 100px;
     width: 100vh;
 }
-.flexDiv{
+.flexDiv {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 1;   
+    position: relative;
+    height:55vh;
+    width:99vw;
+    max-width: 100vw;
+    background-image: url("../assets/images/pngfind.com-linhas-png-5482397 3.png");
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    background-position: 100% 80%;
+    color:white;      
+}
 
+.flexDiv form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    z-index: 1;             
 }
 h1{
     font-family: 'Orbitron';
