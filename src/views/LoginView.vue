@@ -11,6 +11,7 @@
         </form>
         <router-link to="/registar" class="routerLinkDec">Não tens uma conta?</router-link>
     </div>
+    <MyPopUpLogin v-if="isNowLoggedIn"></MyPopUpLogin>
     <MyFooter />
 </template>
 
@@ -19,25 +20,28 @@ import { useUsersStore } from '@/stores/users';
 import {useRouter} from 'vue-router'
 import MyNavBar from '@/components/navbar.vue';
 import MyFooter from '@/components/footer.vue';
+import MyPopUpLogin from '@/components/PopUpLogin.vue'
 
 export default {
     components: {
         MyNavBar,
         MyFooter,
+        MyPopUpLogin,
     },
     data() {
         return {
             name: '',
             password: '',
             store: useUsersStore(),
-            router: useRouter()
+            router: useRouter(),
+            isNowLoggedIn: false,
         }
     },
     methods: {
         submit(name, password) {
             this.store.checkLogin(name, password);
             if (this.store.isAuthenticated){
-                this.router.push('/')
+                this.isNowLoggedIn = !this.isNowLoggedIn
             }
         }
     }

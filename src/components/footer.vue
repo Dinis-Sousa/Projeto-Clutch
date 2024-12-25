@@ -24,16 +24,16 @@
                     <img src="../assets/images/Line 96.png" alt="linhaFooter">
                     <span>Segue-nos em:</span>
                     <a target="_blank" href="https://www.instagram.com/">
-                        <img src="../assets/images/instagram-white-icon 1.png" alt="instaIcon">
+                        <img class="iconsDec" src="../assets/images/instagram-white-icon 1.png" alt="instaIcon">
                     </a>
                     <a target="_blank" href="https://www.facebook.com/">
-                        <img src="../assets/images/Vector.png" alt="faceIcon">
+                        <img class="iconsDec" src="../assets/images/Vector.png" alt="faceIcon">
                     </a>
                     <a target="_blank" href="https://x.com/">
-                        <img src="../assets/images/Vector (1).png" alt="XIcon">
+                        <img class="iconsDec" src="../assets/images/Vector (1).png" alt="XIcon">
                     </a>
                     <a target="_blank" href="https://www.youtube.com/">
-                        <img src="../assets/images/youtube-app-white-icon 1.png" alt="YTIcon">
+                        <img class="iconsDec" src="../assets/images/youtube-app-white-icon 1.png" alt="YTIcon">
                     </a>
                     <img src="../assets/images/Line 96.png" alt="linhaFooter">
                 </div>
@@ -100,6 +100,10 @@ body{
 .footerRouterLinkDec{
     text-decoration: none;
     color:white;
+    transition: transform 0.3s ease-in-out, color 0.3s ease, background-color 0.3s ease;
+}
+.footerRouterLinkDec:hover{
+    transform: scale(1.2);
 }
 .FooterImg{
     height: auto;
@@ -145,5 +149,11 @@ body{
     width: 3vw;
     color:white;
     background-color: #0000CD;
+}
+.iconsDec{
+    transition: transform 0.3s ease-in-out, color 0.3s ease, background-color 0.3s ease;
+}
+.iconsDec:hover{
+    transform: scale(1.2);
 }
 </style>

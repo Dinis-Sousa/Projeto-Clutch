@@ -11,7 +11,7 @@
         <li><router-link :class="{active: isPerfilPage}" class="navRouterLinkDec" to="/perfil">Perfil</router-link></li>
         </ul>
         <router-link to="/login"><button :class="{active: isLoginPage}" class="navLoginBtn" v-if="!store.isAuthenticated">Login</button></router-link>
-        <button class="navLogoutBtn " @click="LogOut" v-if="store.isAuthenticated">Logout</button>   
+        <button class="navLogoutBtn" :class="{active: isLoginPage}" @click="LogOut" v-if="store.isAuthenticated">Logout</button>   
     </nav>
     
 </template>
@@ -104,6 +104,10 @@ body{
     background-color: black;
     color:white; 
 }
+.navLoginBtn.active{
+    background-color: #2E2E91;
+    border: 1px solid transparent;
+}
 .navLogoutBtn{
     width:156px;
     height:62px;
@@ -112,7 +116,7 @@ body{
     background-color: #9F00FF;
     color:white; 
 }
-.navLoginBtn.active{
+.navLogoutBtn.active{
     background-color: #2E2E91;
     border: 1px solid transparent;
 }

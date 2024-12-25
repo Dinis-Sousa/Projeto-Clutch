@@ -20,7 +20,6 @@ export const useUsersStore = defineStore('users', {
             if(nameCheck){
                 const passCheck = nameCheck.password == password;
                 if(passCheck){
-                    alert('Login efetuado com sucesso');
                     this.isAuthenticated = true
                     if(nameCheck.id === 0) {
                         this.isAdmin = true
