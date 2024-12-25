@@ -10,17 +10,22 @@
         <li><router-link :class="{active: isSobrePage}" class="navRouterLinkDec" to="/sobre">Sobre</router-link></li>
         <li><router-link :class="{active: isPerfilPage}" class="navRouterLinkDec" to="/perfil">Perfil</router-link></li>
         </ul>
-        <router-link to="/login"><button :class="{active: isLoginPage}" class="navLoginBtn">Login</button></router-link>    
+        <router-link to="/login"><button :class="{active: isLoginPage}" class="navLoginBtn" v-if="!store.isAuthenticated">Login</button></router-link>
+        <button class="navLogoutBtn " @click="LogOut" v-if="store.isAuthenticated">Logout</button>   
     </nav>
     
 </template>
 
 <script>
+import { useUsersStore } from '@/stores/users';
+import {useRouter} from 'vue-router';
     export default {
         name:"MyNavBar",
         data() {
             return {
                 currentRoute:this.$route.path,
+                store: useUsersStore(),
+                router: useRouter(),
             }
         },
         computed: {
@@ -42,6 +47,12 @@
             isPerfilPage(){
                 return this.$route.path === '/perfil';
             },
+        },
+        methods: {
+            LogOut(){
+                this.store.isAuthenticated =!this.store.isAuthenticated
+                window.location.reload();
+            }
         }
     }
 </script>
@@ -91,6 +102,14 @@ body{
     border: 1px solid #7A7373;
     border-radius:50px;
     background-color: black;
+    color:white; 
+}
+.navLogoutBtn{
+    width:156px;
+    height:62px;
+    border: 1px solid #7A7373;
+    border-radius:50px;
+    background-color: #9F00FF;
     color:white; 
 }
 .navLoginBtn.active{

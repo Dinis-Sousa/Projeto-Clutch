@@ -45,10 +45,9 @@
         <h1 id="timerTime">12:30:50</h1>
     </div>
     <div class="backgroundCoiso">
-        <button id="homeComprarBilhete" @click="TogglePopUp('buttonTrigger')">Comprar bilhete</button>
+        <button id="homeComprarBilhete" @click="checkLogin">Comprar bilhete</button>
     </div>
-    <MyPopUP v-if="popUpTriggers.buttonTrigger">
-    </MyPopUP>
+    <Transition name="slide-bottom" @before-enter="beforeEnter" @enter="enter"><MyPopUP v-if="buttonTrigger"></MyPopUP></Transition>
     <MyFooter />
 </template>
 
@@ -56,32 +55,42 @@
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
 import MyPopUP from '@/components/PopUp.vue'
-import {ref} from 'vue'
+import { useUsersStore } from '@/stores/users'
+import {useRouter} from 'vue-router'
+
     export default {
-        setup() {
-            const popUpTriggers = ref({
-                buttonTrigger: false,
-            })
-            const TogglePopUp = (trigger) => {
-                popUpTriggers.value[trigger] = !popUpTriggers.value[trigger]
-            }
-
+        data() {
             return {
-                popUpTriggers,
-                TogglePopUp
+                hover: false,
+                buttonTrigger: false,
+                store: useUsersStore(),
+                router: useRouter(),
             }
-
         },
         components: {
             MyNavBar,
             MyFooter,
             MyPopUP,
         }, 
-        data() {
-            return {
-                hover: false,
-            }
-        },
+        methods: {
+            checkLogin() {
+                if(!this.store.isAuthenticated){
+                    console.log('funciona')
+                    this.buttonTrigger = !this.buttonTrigger
+                } else {
+                    this.router.push('/tickets')
+                }
+            },
+            beforeEnter(el) {
+                el.style.transform = 'translateY(100%)';
+                el.style.transition = 'transform 0.5s ease-out';
+            },
+            enter(el, done) {
+                el.offsetHeight; // Trigger reflow
+                el.style.transform = 'translateY(0)';
+            done();
+            },
+        }
         
     }
 </script>

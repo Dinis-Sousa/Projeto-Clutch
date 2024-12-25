@@ -26,7 +26,7 @@
     right:0;
     bottom: 0;
     z-index: 99;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.6);
 
     display: flex;
     align-items: center;
@@ -34,13 +34,27 @@
 }
 .popUpInner{
     background-color: #333;
-    backdrop-filter: blur(8px);
     border-radius: 50px;
     border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 100;
+    position: relative;
+    overflow: hidden; /* to ensure blur doesn't leak */
+}
+
+.popUpInner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    filter: blur(10px); /* Adjust the blur level */
+    z-index: 99; /* Make sure the blur is behind the content */
 }
 .popUpBackground button{
     border: 1px solid #0000FF;
@@ -51,6 +65,7 @@
     margin-bottom: 20px;
     font-size: 50px;
     font-weight: lighter;
+    z-index:101;
 }
 .popUpBtns{
     display: flex;
@@ -59,12 +74,19 @@
     align-items: center;
     padding:30px;
     width:100%;
+    z-index:99;
 }
 .popUpBtns button{
     border: 1px solid #0000FF;
     border-radius: 50px;
     background: transparent;
-    color:white;
+    color: #7A7373;
     padding:5px 30px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease, background-color 0.3s ease;
+}
+.popUpBtns button:hover{
+    transform: scale(1.2);
+    color:white;
+    background: black;
 }
 </style>

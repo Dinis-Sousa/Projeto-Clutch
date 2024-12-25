@@ -60,6 +60,7 @@ export const useTicketsStore = defineStore('tickets', {
                 ticket.name = nameTicket;
                 ticket.total = totalTicket;
                 ticket.price = priceTicket;
+                ticket.available = totalTicket;
                 
             }
         },
