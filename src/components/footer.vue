@@ -13,7 +13,7 @@
                     <router-link class="footerRouterLinkDec" to="/agenda">Agenda</router-link>
                     <router-link class="footerRouterLinkDec" to="/berbigao">Patrocinadores</router-link>
                     <router-link class="footerRouterLinkDec" to="/berbigao">FAQs</router-link>
-                    <router-link class="footerRouterLinkDec" to="/berbigao">Carrinho</router-link>
+                    <router-link class="footerRouterLinkDec" to="/carrinho">Carrinho</router-link>
                 </div>
             </div>
             <div class="thirdFlex">
