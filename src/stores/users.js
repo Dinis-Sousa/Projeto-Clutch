@@ -14,6 +14,11 @@ export const useUsersStore = defineStore('users', {
             },
         ]
     }),
+    getters: {
+        clean(){
+            localStorage.clear();
+        }
+    },
     actions: {
         checkLogin(name, password){
             const nameCheck = this.users.find(u => u.name == name)
@@ -75,7 +80,6 @@ export const useUsersStore = defineStore('users', {
 
     persist: {
         enable:true,
-        storage: localStorage,
-        pick: ['users']
+        storage:localStorage,
     }
 });

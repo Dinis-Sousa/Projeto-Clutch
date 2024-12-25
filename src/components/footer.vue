@@ -10,7 +10,7 @@
                     <router-link class="footerRouterLinkDec" to="/tickets">Bilhetes</router-link>
                 </div>
                 <div class="secondFlex2">
-                    <router-link class="footerRouterLinkDec" to="/berbigao">Agenda</router-link>
+                    <router-link class="footerRouterLinkDec" to="/agenda">Agenda</router-link>
                     <router-link class="footerRouterLinkDec" to="/berbigao">Patrocinadores</router-link>
                     <router-link class="footerRouterLinkDec" to="/berbigao">FAQs</router-link>
                     <router-link class="footerRouterLinkDec" to="/berbigao">Carrinho</router-link>

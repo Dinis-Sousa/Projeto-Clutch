@@ -3,7 +3,6 @@ import { useUsersStore } from '@/stores/users';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-
     {
       path: '/',
       name: 'HomePage',
@@ -53,6 +52,12 @@ const router = createRouter({
       path:'/perfil',
       name:'perfil',
       component: () => import('../views/PerfilView.vue'),
+      meta: {isAuthenticated:true}
+    },
+    {
+      path:'/agenda',
+      name:'agenda',
+      component: () => import('../views/AgendaView.vue'),
       meta: {isAuthenticated:true}
     },
   ],

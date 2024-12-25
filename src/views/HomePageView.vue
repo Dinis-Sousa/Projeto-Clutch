@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="mainBtn">
-        <router-link to="/">
+        <router-link to="/agenda">
             <button class="homeBtn" >Veja o que temos planeado</button>
         </router-link>
     </div>
