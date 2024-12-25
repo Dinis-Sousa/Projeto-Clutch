@@ -14,7 +14,7 @@
     </div>
     <div class="homeEvento">
         <h1>Evento</h1>
-        <div class="relVerMais"><router-link to="/registar" class="routerLinkDecVerMais">ver mais</router-link></div>
+        <div class="relVerMais"><router-link to="/evento" class="routerLinkDecVerMais">ver mais</router-link></div>
         <div class="slideContainer">
             <div class="slideWrapper">
                 <div class="wrapperHolder">
@@ -28,7 +28,7 @@
     </div>
     <div class="homeAreas">
         <h1>Areas</h1>
-        <div class="relVerMais"><router-link to="/registar" class="routerLinkDecVerMais">ver mais</router-link></div>
+        <div class="relVerMais"><router-link to="/areas" class="routerLinkDecVerMais">ver mais</router-link></div>
         <div class="slideContainer Areas">
             <div class="slideWrapper Areas">
                 <div class="wrapperHolder Areas">

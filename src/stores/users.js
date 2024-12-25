@@ -12,20 +12,24 @@ export const useUsersStore = defineStore('users', {
                 password: '123456',
                 blocked: false,
             },
-        ]
+        ],
+        AuthenticatedId: null,
+        AuthenticatedName: '',
+        AuthenticatedEmail: '',
     }),
-    getters: {
-        clean(){
-            localStorage.clear();
-        }
-    },
     actions: {
         checkLogin(name, password){
             const nameCheck = this.users.find(u => u.name == name)
             if(nameCheck){
                 const passCheck = nameCheck.password == password;
                 if(passCheck){
-                    this.isAuthenticated = true
+                    this.isAuthenticated = true;
+                    this.AuthenticatedId = nameCheck.id
+                    localStorage.setItem('AuthenticatedId', nameCheck.id);
+                    this.AuthenticatedName = name
+                    localStorage.setItem('AuthenticatedName', name);
+                    this.AuthenticatedEmail = nameCheck.email
+                    localStorage.setItem('AuthenticatedEmail', nameCheck.email);
                     if(nameCheck.id === 0) {
                         this.isAdmin = true
                     } else {
@@ -38,20 +42,42 @@ export const useUsersStore = defineStore('users', {
                 alert('Nome do Utilizador não existe!')
             }
         },
+        showName(){
+            const storeName = localStorage.getItem('AuthenticatedName');
+            this.AuthenticatedName = storeName
+            return storeName
+        },
+        showEmail(){
+            const storeEmail = localStorage.getItem('AuthenticatedEmail');
+            this.AuthenticatedEmail = storeEmail
+            return storeEmail
+        },
         logout(){
             this.isAuthenticated = false
+            this.AuthenticatedId = null,
+            localStorage.removeItem('AuthenticatedId');
         },
         addUser(name, email, password) {
-            const user = {
-                id: this.idUser(),
-                name: name,
-                email: email,
-                password: password,
-                blocked: false,
-                isAdmin: false,
+            const nameCheck = this.users.find(u => u.name == name)
+            if (nameCheck){
+                alert('Esse nome já está a ser usado')
+            } else {
+                const emailCheck = this.users.find(u => u.email == email)
+                if (emailCheck){
+                    alert('Esse email já está a ser usado')
+                } else {
+                    const user = {
+                        id: this.idUser(),
+                        name: name,
+                        email: email,
+                        password: password,
+                        blocked: false,
+                        isAdmin: false,
+                    }
+                    this.users.push(user)
+                    alert('Registado com sucesso!')
+                }
             }
-            this.users.push(user)
-            alert('Registado com sucesso!')
         },
         idUser() {
             if (this.users.length === 0) {
