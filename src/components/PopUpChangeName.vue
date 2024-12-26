@@ -1,17 +1,35 @@
 <template>
     <div class="popUpBackground">
         <div class="popUpInner">
-            <p>Registo efetuado com sucesso</p>
+            <h1>Mudar o nome</h1>
+            <div class="flexInput">    
+                <label for="mudarNome">Novo nome: </label>
+                <input type="text" name="" id="mudarNome" v-model="nome">
+            </div> 
             <div class="popUpBtns">
-                <router-link to="/"><button>Ok</button></router-link>
+                <button @click="mudarNomePopUp(nome)">Mudar</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { useUsersStore } from '@/stores/users';
     export default {
-        name: "MyPopUpLogin",
+        name: "MyPopUpChangeName",
+        data() {
+            return {
+                nome: '',
+                store: useUsersStore(),
+            }
+        },
+        methods: {
+            mudarNomePopUp(nome){
+                this.store.userChangeName(nome)
+                window.location.reload();
+                
+            }
+        }
     }
 </script>
 
@@ -45,11 +63,12 @@
     border: 1px solid #0000FF;
     border-radius: 50px;
 }
-.popUpInner p{
+.popUpInner h1{
     padding: 50px 100px 0px 100px;
+    font-family: 'Orbitron';
     margin-bottom: 20px;
     font-size: 50px;
-    font-weight: lighter;
+    font-weight: bold;
     z-index:101;
 }
 .popUpBtns{
@@ -73,5 +92,25 @@
     transform: scale(1.2);
     color:white;
     background: black;
+}
+.popUpInner input{
+    border: 1px solid black;
+    border-radius: 50px;
+    background-color: white;
+    padding:10px;
+    color:black;
+}
+.popUpInner label{
+    color:black;
+    font-weight: bold;
+    font-size: 1.3em;
+    width: 10vw;
+}
+.flexInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 18vw;
 }
 </style>

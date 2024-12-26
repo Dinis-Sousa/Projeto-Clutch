@@ -13,7 +13,7 @@
             </form>
         </div>
     </div>
-    <MyPopUpLogin v-if="isNowLoggedIn"></MyPopUpLogin>
+    <Transition name="fade"><MyPopUpLogin v-if="isNowLoggedIn"></MyPopUpLogin></Transition>
     <MyFooter />
 </template>
 

@@ -8,7 +8,7 @@
                     <div class="perfilInfo">
                        <span>{{showName}}<br></span>
                         <span>{{ showEmail }}<br></span>
-                        <button>Editar Perfil</button>
+                        <button @click="changeName">Editar Perfil</button>
                     </div>
                 </div>
                 <div class="perfilCenas">
@@ -22,6 +22,7 @@
                 </div>
             </div>
         </div>
+        <MyPopUpChangeName v-if="wannaChangeName"></MyPopUpChangeName>
         <MyFooter />
     </div>
 </template>
@@ -29,18 +30,22 @@
 <script>
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
+import MyPopUpChangeName from '@/components/PopUpChangeName.vue'
 import { useUsersStore } from '@/stores/users';
+import PopUpChangeName from '@/components/PopUpChangeName.vue';
 
 export default {
     components: {
         MyNavBar,
         MyFooter,
+        MyPopUpChangeName,
     },
     data() {
         return {
             store: useUsersStore(),
             name:'',
             email: '',
+            wannaChangeName: false,
         }
     },
     computed: {
@@ -52,6 +57,11 @@ export default {
             this.email = this.store.showEmail()
             return this.email
         },
+    },
+    methods: {
+        changeName(){
+            this.wannaChangeName = !this.wannaChangeName
+        }
     }
 }
 </script>

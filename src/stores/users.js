@@ -42,6 +42,25 @@ export const useUsersStore = defineStore('users', {
                 alert('Nome do Utilizador não existe!')
             }
         },
+        userChangeName(nome){
+            const nameCheck = this.users.find(u => u.name == nome)
+            if(nameCheck){
+                alert('Já está a ser utilizador esse nome')
+            } else {
+                if(nome == '' ){
+                    alert('Campo Vazio')
+                } else {
+                    const storeId = localStorage.getItem('AuthenticatedId');
+                    this.AuthenticatedId = storeId
+                    const userToUpdate = this.users.find(u => u.id == storeId)
+                    if (userToUpdate){
+                    userToUpdate.name = nome
+                    this.AuthenticatedName = nome;
+                    localStorage.setItem('AuthenticatedName', nome);
+                    }
+                }
+            }
+        },
         showName(){
             const storeName = localStorage.getItem('AuthenticatedName');
             this.AuthenticatedName = storeName
@@ -103,7 +122,6 @@ export const useUsersStore = defineStore('users', {
         }
         
     },
-
     persist: {
         enable:true,
         storage:localStorage,

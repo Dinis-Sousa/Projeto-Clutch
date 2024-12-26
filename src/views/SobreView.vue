@@ -124,7 +124,6 @@ h1{
     background-image: url('../assets/images/image (1).png');
     background-repeat: no-repeat;
     background-size: cover;
-    margin-left: 100px;
 }
 .overWatch{
     height: 50vh;
@@ -132,7 +131,6 @@ h1{
     background-image: url('../assets/images/image 28.png');
     background-repeat: no-repeat;
     background-size: cover;
-    margin-left: 100px;
 }
 .backgroundCoisoSobre{
     position: relative;
