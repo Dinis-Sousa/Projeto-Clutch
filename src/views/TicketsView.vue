@@ -1,15 +1,15 @@
 <template>
     <MyNavBar />
-    <div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center">
-        <h1 class="text-center mb-4" style="margin-top:0px;">Tickets Disponíveis</h1>
-        <div class="row justify-content-center">
-            <div class="col-md-4 mb-4" v-for="ticket in store.tickets" :key="ticket.id">
-                <div class="card custom-card">
-                    <div class="card-body">
-                        <h5 class="card-title custom-title text-primary">{{ ticket.name }}</h5>
-                        <p class="card-text custom-text">Bilhetes disponíveis: {{ ticket.available }}</p>
-                        <p class="card-text custom-text">Preço: {{ ticket.price }}</p>
-                        <button @click="buyTicket(ticket.id)" class="btn btn-dark">Comprar bilhetes</button>
+    <div class="bilhetesContainer">
+        <h1 class="bilhetesTítulo" style="margin-top:0px;">Bilhetes</h1>
+        <div class="BilhetesContainer">
+            <div class="cadaBilheteContainer" v-for="ticket in store.tickets" :key="ticket.id">
+                <div class="bilhetesCard">
+                    <div class="cardBody">
+                        <h5 class="cardTitle">{{ ticket.name }}</h5>
+                        <p class="cardText">Bilhetes disponíveis: {{ ticket.available }}</p>
+                        <p class="cardText">Preço: {{ ticket.price }}</p>
+                        <button @click="buyTicket(ticket.id)" class="cardBtn">Comprar bilhetes</button>
                     </div>
                 </div>
             </div>
@@ -53,6 +53,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bilhetesTítulo{
+    text-align: center;
+}
 .logoutBtn{
     width:100px;
     height:50px;

@@ -16,6 +16,8 @@ export const useUsersStore = defineStore('users', {
         AuthenticatedId: null,
         AuthenticatedName: '',
         AuthenticatedEmail: '',
+        AuthenticatedBilhetesComprados: null,
+        AuthenticatedCarrinho: [],
     }),
     actions: {
         checkLogin(name, password){
@@ -30,6 +32,10 @@ export const useUsersStore = defineStore('users', {
                     localStorage.setItem('AuthenticatedName', name);
                     this.AuthenticatedEmail = nameCheck.email
                     localStorage.setItem('AuthenticatedEmail', nameCheck.email);
+                    this.AuthenticatedBilhetesComprados = nameCheck.bilhetesComprados
+                    localStorage.setItem('AuthenticatedBilhetesComprados', nameCheck.bilhetesComprados);
+                    this.AuthenticatedCarrinho = nameCheck.carrinho
+                    localStorage.setItem('AuthenticatedCarrinho', nameCheck.carrinho);
                     if(nameCheck.id === 0) {
                         this.isAdmin = true
                     } else {
@@ -71,6 +77,16 @@ export const useUsersStore = defineStore('users', {
             this.AuthenticatedEmail = storeEmail
             return storeEmail
         },
+        showBilhetes() {
+            const storeBilhetesComprados = localStorage.getItem('AuthenticatedBilhetesComprados');
+            this.AuthenticatedBilhetesComprados = storeBilhetesComprados
+            return storeBilhetesComprados
+        },
+        showCarrinho() {
+            const storeCarrinho = localStorage.getItem('AuthenticatedCarrinho');
+            this.AuthenticatedCarrinho = storeCarrinho
+            return storeCarrinho
+        },
         logout(){
             this.isAuthenticated = false
             this.AuthenticatedId = null,
@@ -90,6 +106,8 @@ export const useUsersStore = defineStore('users', {
                         name: name,
                         email: email,
                         password: password,
+                        bilhetesComprados: null,
+                        carrinho: null,
                         blocked: false,
                         isAdmin: false,
                     }

@@ -1,6 +1,7 @@
 <template>
     <div>
         <MyNavBar />
+        <h1>Carrinho</h1>
         <MyFooter />
     </div>
 </template>

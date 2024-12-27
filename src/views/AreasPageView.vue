@@ -214,7 +214,7 @@ h1{
     border: 1px solid black;
     background-color: white;
     color:black;
-    border-radius: 50px;
+    border-radius: 100px;
     margin: 300px 0px;
     padding:16px;
     width: 473px;
@@ -223,7 +223,7 @@ h1{
     font-weight: lighter;
 }
 .areaButton:hover{
-    background: linear-gradient(to right, #007fc7,#9F00FF);
+    background: linear-gradient(to right, #0000CD,#9F00FF);
     color:white;
 }
 .backgroundCoisoAreas{

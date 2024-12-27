@@ -1,27 +1,33 @@
 <template>
     <div>
         <MyNavBar />
-        <div class="containerFlex">    
-            <div class="perfilContainer">
-                <div class="perfilInner">
-                    <div class="perfilImg"></div>
-                    <div class="perfilInfo">
-                       <span>{{showName}}<br></span>
-                        <span>{{ showEmail }}<br></span>
-                        <button @click="changeName">Editar Perfil</button>
+        <div class="pageControl">   
+            <div class="greyBorder">    
+                <div class="backgroundCoisoPerfil">
+                    <div class="containerFlex">    
+                        <div class="perfilContainer">
+                            <div class="perfilInner">
+                                <div class="perfilImg"></div>
+                                <div class="perfilInfo">
+                                <span>{{showName}}<br></span>
+                                    <span>{{ showEmail }}<br></span>
+                                    <button @click="changeName">Editar Perfil</button>
+                                </div>
+                            </div>
+                            <div class="perfilCenas">
+                                <div class="cenasCenadas">
+                                    <span>Bilhetes Comprados</span>
+                                    <span>Métodos Pagamento</span>
+                                </div>
+                                <div class="cenasdoCarrinho">
+                                    <router-link to="/carrinho"><button>Ver Carrinho</button></router-link>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="perfilCenas">
-                    <div class="cenasCenadas">
-                        <span>Bilhetes Comprados</span>
-                        <span>Métodos Pagamento</span>
-                    </div>
-                    <div class="cenasdoCarrinho">
-                        <router-link to="/carrinho"><button>Ver Carrinho</button></router-link>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </div> 
+        </div> 
         <MyPopUpChangeName v-if="wannaChangeName"></MyPopUpChangeName>
         <MyFooter />
     </div>
@@ -32,7 +38,6 @@ import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
 import MyPopUpChangeName from '@/components/PopUpChangeName.vue'
 import { useUsersStore } from '@/stores/users';
-import PopUpChangeName from '@/components/PopUpChangeName.vue';
 
 export default {
     components: {
@@ -67,16 +72,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.containerFlex {
+.pageControl{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 5vw 0px 15vw 0px;
 }
-.perfilContainer{
-    width: 67vw;
-    height: 69vh;
-    border: 1px solid #7A7373;
+.containerFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64vh;
+    margin: 0px 0px 15vw 0px;
+}
+.greyBorder{
+    width: 99vw;
+    height: 100vh;
+    border: 1px solid transparent;
     border-radius: 50px;
     background-color: black;
     left:50%;
@@ -84,7 +97,29 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;    
+    z-index: 0;
+}
+.perfilContainer{
+    width: 67vw;
+    height: 69vh;
+    border: 1px solid #333;
+    border-radius: 50px;
+    background-color: transparent;
+    left:50%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px; 
+}
+.backgroundCoisoPerfil{
+    width: 100vw;
+    max-width: 100vw;
+    height: 620px;
+    background-image: url('../assets/images/pngfind.com-linhas-png-5482397 3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
 }
 .perfilInner{
     display: flex;
@@ -93,10 +128,12 @@ export default {
     align-items: center;
     height: 64vh;
     border: 1px solid white;
+    background-color: black;
     border-radius: 50px;
-    margin:50px 50px 100px 100px;
+    margin:5vw 50px 5vw 100px;
     padding:20px;
     width: 20vw;
+    z-index: 2;
 }
 .perfilImg{
     display: flex;
@@ -145,6 +182,7 @@ export default {
     width: 30vw;
     padding: 0px;
     border: 1px solid white;
+    background-color: black;
     border-radius: 50px;
     padding:20px;
     margin:50px 100px 100px 100px;
