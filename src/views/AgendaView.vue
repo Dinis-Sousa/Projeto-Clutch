@@ -155,7 +155,7 @@ import MyFooter from '@/components/footer.vue'
     font-family: 'Orbitron';
     font-weight: bold;
     margin: 0px;
-    font-size: 3em;
+    font-size: 2.5em;
     height: 50%;
     width: 11,8vw;
     padding: 0px 10px 0px 30px
@@ -170,12 +170,12 @@ import MyFooter from '@/components/footer.vue'
     height: 11,2vh;
 }
 .data2ndpart1 h1{
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 #text2ndpart{
     font-weight: bold;
-    font-size: 2.2em;
+    font-size: 2em;
 }
 .data2ndpart1{
     display: flex;

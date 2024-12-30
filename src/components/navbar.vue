@@ -66,7 +66,7 @@ body{
 .navBarFlex{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin:30px;
     font-size: 20px;
@@ -76,12 +76,13 @@ body{
     height:176px;
 }
 .navBarFlex ul{
-    width: 1200px;
+    width: 62.5vw;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     list-style-type: none;
     align-items: center;
+    padding: 0px;
 }
 .navBarFlex ul li{
     text-decoration: none;
