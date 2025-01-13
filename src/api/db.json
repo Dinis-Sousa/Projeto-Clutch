@@ -1,0 +1,22 @@
+{
+    "convidados" : [
+        {
+            "id": 1,
+            "name" : "zorlak",
+            "image" : "../assets/images/image.png",
+            "introduction" : "Aos 32 anos, Ricardo Sousa — conhecido como “Zorlak” — fez valer os quase 20 anos ligados aos videojogos para se tornar streamer, aplicando os seus conhecimentos sobre o jogo Counter Strike num “projecto pioneiro a nível mundial” a partir da plataforma Twitch, destinada à transmissão de videojogos."
+        },
+        {
+            "id": 2,
+            "name" : "tomasyz",
+            "image" : "'../assets/images/image (1).png'",
+            "introduction" : "Tomás ‘tomasyz’ Machado é um jogador profissional de valorant e neste momento considerado o melhor jogador de valorant português, atualmente joga na equipa GiantX."
+        },
+        {
+            "id": 3,
+            "name" : "xQc",
+            "image" : "../assets/images/image 28.png",
+            "introduction" : "Félix ‘xQc’ Lengyel é um ex-jogador profissional de Overwatch, amplamente reconhecido como um dos melhores jogadores da história do jogo. Atualmente, ele é um dos maiores streamers do mundo, mas seu legado no cenário competitivo de Overwatch permanece marcante."
+        }
+    ]
+}
