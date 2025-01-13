@@ -16,6 +16,7 @@
                que tu!</p>
         </div>
         <h1 id="jogosEmDestaque">Jogos em Destaque</h1>
+
         <MyFooter />
     </div>
 </template>
@@ -23,12 +24,26 @@
 <script>
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
+import { useJogosEmDestaqueStore } from '@/stores/jogosEmDestaque';
 
 export default {
     components: {
         MyNavBar,
         MyFooter,
     },
+    data() {
+        return {
+            store: useJogosEmDestaqueStore()
+        }
+    },
+    computed: {
+        showCs(){
+            showCs = this.store.showCs()
+            csH1 = showCs[0]
+            csVideo = showCs[1]
+            csIcon = showCs[2]
+        }
+    }
     
 }
 </script>

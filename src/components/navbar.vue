@@ -69,8 +69,8 @@ body{
     justify-content: space-evenly;
     align-items: center;
     margin:30px;
-    font-size: 20px;
-    font-family: 'Host Grotesk';
+    font-size: 1.8em;
+    font-family: 'Orbitron';
 }
 .navImg{
     height:176px;
@@ -103,11 +103,15 @@ body{
     border: 1px solid #7A7373;
     border-radius:50px;
     background-color: black;
-    color:white; 
+    color:white;
+    font-family: 'Host-Grotesk';
+    font-weight: bold;
 }
 .navLoginBtn.active{
     background-color: #2E2E91;
     border: 1px solid transparent;
+    font-family: 'Host-Grotesk';
+    font-weight: bold;
 }
 .navLogoutBtn{
     width:156px;
@@ -116,9 +120,13 @@ body{
     border-radius:50px;
     background-color: #9F00FF;
     color:white; 
+    font-family: 'Host-Grotesk';
+    font-weight: bold;
 }
 .navLogoutBtn.active{
     background-color: #2E2E91;
     border: 1px solid transparent;
+    font-family: 'Host-Grotesk';
+    font-weight: bold;
 }
 </style>

@@ -26,18 +26,18 @@
         <h1 class="sobreParceirosTitle"> Parceiros e Patrocinadores</h1>
         <div class="sobreParceirosContainer">
             <div class="sobreParceiros1stLine">
-                <img :src="showImg1" alt="niggers">
-                <img :src="showImg2" alt="niggers">
-                <img :src="showImg3" alt="niggers">
+                <img :src="showImg1" alt="img1">
+                <img :src="showImg2" alt="img2">
+                <img :src="showImg3" alt="img3">
+            </div>
+            <div class="sobreParceiros1stLine2">
+                <img :src="showImg4" alt="img4">
+                <img :src="showImg5" alt="img5">
             </div>
             <div class="sobreParceiros1stLine">
-                <img :src="showImg4" alt="niggers">
-                <img :src="showImg5" alt="niggers">
-            </div>
-            <div class="sobreParceiros1stLine">
-                <img :src="showImg6" alt="niggers">
-                <img :src="showImg7" alt="niggers">
-                <img :src="showImg8" alt="niggers">
+                <img :src="showImg6" alt="img6">
+                <img :src="showImg7" alt="img7">
+                <img :src="showImg8" alt="img8">
             </div>
         </div>
         <MyFooter />
@@ -195,9 +195,34 @@ h1{
 .sobreParceirosTitle{
     text-align: center;
 }
+.sobreParceirosContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .sobreParceiros1stLine{
     display: flex;
     justify-content: space-around;
     padding:50px;
+    padding-bottom: 20vh;
+    align-items: center;
+    width:99vw;
+}
+.sobreParceiros1stLine2{
+    display: flex;
+    justify-content: space-around;
+    padding:50px 150px;
+    padding-bottom: 20vh;
+    align-items: center;
+    width:80vw;
+}
+.sobreParceiros1stLine2 img{
+    width: 15vw;
+    height: 18vh;
+}
+.sobreParceiros1stLine img{
+    width: 15vw;
+    height: 18vh;
 }
 </style>
