@@ -23,6 +23,23 @@
         </div>
         <div class="backgroundCoisoSobre"></div>
         <h1 class="sobreFaqs">FAQ'S</h1>
+        <h1 class="sobreParceirosTitle"> Parceiros e Patrocinadores</h1>
+        <div class="sobreParceirosContainer">
+            <div class="sobreParceiros1stLine">
+                <img :src="showImg1" alt="niggers">
+                <img :src="showImg2" alt="niggers">
+                <img :src="showImg3" alt="niggers">
+            </div>
+            <div class="sobreParceiros1stLine">
+                <img :src="showImg4" alt="niggers">
+                <img :src="showImg5" alt="niggers">
+            </div>
+            <div class="sobreParceiros1stLine">
+                <img :src="showImg6" alt="niggers">
+                <img :src="showImg7" alt="niggers">
+                <img :src="showImg8" alt="niggers">
+            </div>
+        </div>
         <MyFooter />
     </div>
 </template>
@@ -30,12 +47,45 @@
 <script>
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
+import {useParceirosImgStore} from '@/stores/ParceirosImg'
 
 export default {
     components: {
         MyNavBar,
         MyFooter,
+
     },
+    data() {
+        return {
+            store: useParceirosImgStore(),
+        }
+    },
+    computed: {
+        showImg1(){
+            return this.store.showImg()
+        },
+        showImg2(){
+            return this.store.showImg1()
+        },
+        showImg3(){
+            return this.store.showImg2()
+        },
+        showImg4(){
+            return this.store.showImg3()
+        },
+        showImg5(){
+            return this.store.showImg4()
+        },
+        showImg6(){
+            return this.store.showImg5()
+        },
+        showImg7(){
+            return this.store.showImg6()
+        },
+        showImg8(){
+            return this.store.showImg7()
+        }
+    }
     
 }
 </script>
@@ -141,5 +191,13 @@ h1{
     background-position: 0% 99vw 50% 99vw;
     z-index: 1;
     color:white;
+}
+.sobreParceirosTitle{
+    text-align: center;
+}
+.sobreParceiros1stLine{
+    display: flex;
+    justify-content: space-around;
+    padding:50px;
 }
 </style>
