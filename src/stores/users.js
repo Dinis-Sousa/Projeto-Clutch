@@ -16,7 +16,7 @@ export const useUsersStore = defineStore('users', {
         AuthenticatedId: null,
         AuthenticatedName: '',
         AuthenticatedEmail: '',
-        AuthenticatedBilhetesComprados: null,
+        AuthenticatedPreçoTotal: null,
         AuthenticatedCarrinho: [],
     }),
     actions: {
@@ -106,8 +106,8 @@ export const useUsersStore = defineStore('users', {
                         name: name,
                         email: email,
                         password: password,
-                        bilhetesComprados: null,
-                        carrinho: null,
+                        priceTotal: 0,
+                        carrinho: [],
                         blocked: false,
                         isAdmin: false,
                     }
@@ -141,7 +141,7 @@ export const useUsersStore = defineStore('users', {
         
     },
     persist: {
-        enable:true,
+        enable: true,
         storage:localStorage,
     }
 });

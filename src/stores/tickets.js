@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { useUsersStore } from '@/stores/users';
 
 export const useTicketsStore = defineStore('tickets', {
     state: () => ({
@@ -50,7 +51,20 @@ export const useTicketsStore = defineStore('tickets', {
             const ticket = this.tickets.find(t => t.id === idTicket);
             if (ticket && ticket.available > 0) {
                 ticket.available--;
-                ticket.profit += ticket.price;
+                ticket.profit += parseInt(ticket.price);
+                const userStore = useUsersStore();
+                const storeId = userStore.AuthenticatedId 
+                console.log(storeId)
+                const userToUpdate = userStore.users.find(u => u.id == storeId)
+                if (userToUpdate){
+                    const boughtTicket = {
+                        id : ticket.id,
+                        name : ticket.name,
+                        price : ticket.price,
+                    }
+                    userToUpdate.carrinho.push(boughtTicket)
+                }
+                userToUpdate.priceTotal = parseInt(userToUpdate.priceTotal) + parseFloat(ticket.price)
             }
         },
 
@@ -61,7 +75,6 @@ export const useTicketsStore = defineStore('tickets', {
                 ticket.total = totalTicket;
                 ticket.price = priceTicket;
                 ticket.available = totalTicket;
-                
             }
         },
 
