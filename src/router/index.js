@@ -21,6 +21,12 @@ const router = createRouter({
       meta:{isAuthenticated:true, isAdmin: true}
     },
     {
+      path:'/adminUsers',
+      name:'adminUsers',
+      component: () => import('../views/AdminUsersView.vue'),
+      meta:{isAuthenticated:true, isAdmin: true}
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue'),

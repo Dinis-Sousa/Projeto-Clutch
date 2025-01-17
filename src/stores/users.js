@@ -44,7 +44,7 @@ export const useUsersStore = defineStore('users', {
                     localStorage.setItem('AuthenticatedBilhetesComprados', nameCheck.bilhetesComprados);
                     this.AuthenticatedCarrinho = nameCheck.carrinho
                     localStorage.setItem('AuthenticatedCarrinho', nameCheck.carrinho);
-                    if(nameCheck.id === 0) {
+                    if(nameCheck.isAdmin == true) {
                         this.isAdmin = true
                     } else {
                         this.isAdmin = false
@@ -132,24 +132,24 @@ export const useUsersStore = defineStore('users', {
             }
         },
         blockUser(idUser) {
-            const user = this.users.find(u => u.id === idUser);
+            const user = this.users.find(u => u.id == idUser);
             if (user) {
-                user.blocked = true;
+                user.blocked = !user.blocked;
+            }
+        },
+        darAdmin(idUser){
+            const user = this.users.find(u => u.id == idUser)
+            if (user) {
+                user.isAdmin = !user.isAdmin;
             }
         },
         deleteUser(idUser) {
             this.users = this.users.filter(u => u.id !== idUser);
         },
-        unblock(idUser) {
-            const user = this.users.find(u => u.id === idUser);
-            if (user) {
-                user.blocked = false;
-            }
-        }
         
     },
     persist: {
-        enable: false,
+        enable: true,
         storage:localStorage,
     }
 });
