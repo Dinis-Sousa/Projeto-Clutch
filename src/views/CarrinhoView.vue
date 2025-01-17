@@ -145,10 +145,14 @@ h1{
     border: 1px solid transparent;
     background-color: #2E2E91;
     color:white;
-    font-size: 1em ;
+    font-size: 1.5em ;
     font-family: 'Orbitron';
-    padding:10px 50px;
+    font-weight: bold;
+    padding:10px 30px;
 }
+.finalizarcompraBtn:hover{
+    transform: scale(1.2);
+} 
 .containerBtn{
     width: 62vw;
     display:flex;
@@ -158,5 +162,9 @@ h1{
 }
 #valorFinal{
     font-family: 'Host Grotesk';
+}
+.cadaBilheteNumbers h1{
+    font-family: 'Host Grotesk';
+    font-weight: bold;
 }
 </style>
