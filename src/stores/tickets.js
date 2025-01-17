@@ -9,7 +9,7 @@ export const useTicketsStore = defineStore('tickets', {
                 name: 'Clutch Day 1',
                 total: 200,
                 available: 200,
-                price: 25,
+                price: 15,
                 profit: 0
             },
             {
@@ -17,7 +17,7 @@ export const useTicketsStore = defineStore('tickets', {
                 name: 'Clutch Day 2',
                 total: 200,
                 available: 200,
-                price: 25,
+                price: 15,
                 profit: 0
             },
             {
@@ -25,7 +25,7 @@ export const useTicketsStore = defineStore('tickets', {
                 name: 'Clutch Day 3',
                 total: 200,
                 available: 200,
-                price: 25,
+                price: 15,
                 profit: 0
             },
             {
@@ -33,7 +33,7 @@ export const useTicketsStore = defineStore('tickets', {
                 name: 'Clutch General Pass ',
                 total: 200,
                 available: 200,
-                price: 25,
+                price: 35,
                 profit: 0
             },
             {
@@ -41,7 +41,7 @@ export const useTicketsStore = defineStore('tickets', {
                 name: 'Clutch VIP Pass',
                 total: 200,
                 available: 200,
-                price: 25,
+                price: 65,
                 profit: 0
             }
         ]
@@ -54,17 +54,22 @@ export const useTicketsStore = defineStore('tickets', {
                 ticket.profit += parseInt(ticket.price);
                 const userStore = useUsersStore();
                 const storeId = userStore.AuthenticatedId 
-                console.log(storeId)
                 const userToUpdate = userStore.users.find(u => u.id == storeId)
                 if (userToUpdate){
-                    const boughtTicket = {
-                        id : ticket.id,
-                        name : ticket.name,
-                        price : ticket.price,
+                    const ticketAlreadyBought = userToUpdate.carrinho.find(carrinho => carrinho.id === idTicket)
+                    if(ticketAlreadyBought){
+                        ticketAlreadyBought.number ++
+                    } else{
+                        const boughtTicket = {
+                            id : ticket.id,
+                            name : ticket.name,
+                            price : ticket.price,
+                            number: 1
+                        }
+                        userToUpdate.carrinho.push(boughtTicket)
                     }
-                    userToUpdate.carrinho.push(boughtTicket)
+                    userToUpdate.priceTotal = parseInt(userToUpdate.priceTotal) + parseFloat(ticket.price)
                 }
-                userToUpdate.priceTotal = parseInt(userToUpdate.priceTotal) + parseFloat(ticket.price)
             }
         },
 

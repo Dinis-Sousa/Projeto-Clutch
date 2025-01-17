@@ -19,6 +19,14 @@ export const useUsersStore = defineStore('users', {
         AuthenticatedPreçoTotal: null,
         AuthenticatedCarrinho: [],
     }),
+    getters: {
+        CurrentAuthenticatedCarrinho(){
+            const storeId = this.AuthenticatedId 
+            const userToUpdate = this.users.find(u => u.id == storeId)
+            console.log(userToUpdate.carrinho)
+            return Array.from(userToUpdate.carrinho)
+        },
+    },
     actions: {
         checkLogin(name, password){
             const nameCheck = this.users.find(u => u.name == name)
@@ -141,7 +149,7 @@ export const useUsersStore = defineStore('users', {
         
     },
     persist: {
-        enable: true,
+        enable: false,
         storage:localStorage,
     }
 });
