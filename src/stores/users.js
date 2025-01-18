@@ -153,7 +153,7 @@ export const useUsersStore = defineStore('users', {
         
     },
     persist: {
-        enable: false,
+        enable: true,
         storage:localStorage,
     }
 });
