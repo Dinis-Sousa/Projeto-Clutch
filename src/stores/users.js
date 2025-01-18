@@ -3,7 +3,8 @@ import { defineStore } from 'pinia';
 export const useUsersStore = defineStore('users', {
     state: () => ({
         isAuthenticated: false,
-        isAdmin:false,
+        isAdmin: false,
+        AuthenticatedId: null,
         users: [
             {
                 id:0,
@@ -14,11 +15,6 @@ export const useUsersStore = defineStore('users', {
                 isAdminUser: true,
             },
         ],
-        AuthenticatedId: null,
-        AuthenticatedName: '',
-        AuthenticatedEmail: '',
-        AuthenticatedPreçoTotal: null,
-        AuthenticatedCarrinho: [],
     }),
     getters: {
         CurrentAuthenticatedCarrinho(){
@@ -26,6 +22,21 @@ export const useUsersStore = defineStore('users', {
             const userToUpdate = this.users.find(u => u.id == storeId)
             console.log(userToUpdate.carrinho)
             return Array.from(userToUpdate.carrinho)
+        },
+        showName(){
+            const storeId = this.AuthenticatedId 
+            const userToUpdate = this.users.find(u => u.id == storeId)
+            return userToUpdate.name
+        },
+        showEmail(){
+            const storeId = this.AuthenticatedId 
+            const userToUpdate = this.users.find(u => u.id == storeId)
+            return userToUpdate.email
+        },
+        showValordoCarrinho() {
+            const storeId = this.AuthenticatedId 
+            const userToUpdate = this.users.find(u => u.id == storeId)
+            return userToUpdate.priceTotal
         },
     },
     actions: {
@@ -38,16 +49,9 @@ export const useUsersStore = defineStore('users', {
                         alert('O ADMIN BLOQUEOU-TE KKKKKKKKK')
                     } else {
                         this.isAuthenticated = true;
+                        this.isAdmin = nameCheck.isAdminUser;
                         this.AuthenticatedId = nameCheck.id
                         localStorage.setItem('AuthenticatedId', nameCheck.id);
-                        this.AuthenticatedName = name
-                        localStorage.setItem('AuthenticatedName', name);
-                        this.AuthenticatedEmail = nameCheck.email
-                        localStorage.setItem('AuthenticatedEmail', nameCheck.email);
-                        this.AuthenticatedBilhetesComprados = nameCheck.bilhetesComprados
-                        localStorage.setItem('AuthenticatedBilhetesComprados', nameCheck.bilhetesComprados);
-                        this.AuthenticatedCarrinho = nameCheck.carrinho
-                        console.log(nameCheck.isAdminUser)
                         this.isAdmin = nameCheck.isAdminUser;
                     }
                 } else{
@@ -76,28 +80,9 @@ export const useUsersStore = defineStore('users', {
                 }
             }
         },
-        showName(){
-            const storeName = localStorage.getItem('AuthenticatedName');
-            this.AuthenticatedName = storeName
-            return storeName
-        },
-        showEmail(){
-            const storeEmail = localStorage.getItem('AuthenticatedEmail');
-            this.AuthenticatedEmail = storeEmail
-            return storeEmail
-        },
-        showBilhetes() {
-            const storeBilhetesComprados = localStorage.getItem('AuthenticatedBilhetesComprados');
-            this.AuthenticatedBilhetesComprados = storeBilhetesComprados
-            return storeBilhetesComprados
-        },
-        showCarrinho() {
-            const storeCarrinho = localStorage.getItem('AuthenticatedCarrinho');
-            this.AuthenticatedCarrinho = storeCarrinho
-            return storeCarrinho
-        },
         logout(){
-            this.isAuthenticated = false
+            this.isAdmin = false,
+            this.isAuthenticated = false,
             this.AuthenticatedId = null,
             localStorage.removeItem('AuthenticatedId');
         },
@@ -125,6 +110,14 @@ export const useUsersStore = defineStore('users', {
                 }
             }
         },
+        modifyUser(idUser, nameUser, emailUser, priceTotalUser){
+            const user = this.users.find(u => u.id == idUser);
+            if (user) {
+                user.name = nameUser;
+                user.total = emailUser;
+                user.price = priceTotalUser;
+            }
+        },
         idUser() {
             if (this.users.length === 0) {
                 return 1
@@ -149,6 +142,9 @@ export const useUsersStore = defineStore('users', {
             if (user) {
                 this.users.splice(user,1)
             }
+        },
+        resetLocalStorage(){
+            localStorage.clear()
         },
         
     },

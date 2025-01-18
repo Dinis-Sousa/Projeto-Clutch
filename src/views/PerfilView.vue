@@ -16,8 +16,8 @@
                             </div>
                             <div class="perfilCenas">
                                 <div class="cenasCenadas">
-                                    <span>Bilhetes Comprados</span>
-                                    <span>Métodos Pagamento</span>
+                                    <span>Valor do Carrinho: {{ showCardValue }}€</span>
+                                    <span>Métodos Pagamento:</span>
                                 </div>
                                 <div class="cenasdoCarrinho">
                                     <router-link to="/carrinho"><button>Ver Carrinho</button></router-link>
@@ -40,6 +40,14 @@ import MyPopUpChangeName from '@/components/PopUpChangeName.vue'
 import { useUsersStore } from '@/stores/users';
 
 export default {
+    setup(){
+        const store = useUsersStore();
+
+        const showName = store.showName;
+        const showEmail = store.showEmail;
+        const showCardValue = store.showValordoCarrinho;
+        return {showName, showEmail, showCardValue};
+    },
     components: {
         MyNavBar,
         MyFooter,
@@ -52,16 +60,6 @@ export default {
             email: '',
             wannaChangeName: false,
         }
-    },
-    computed: {
-        showName(){
-                this.name = this.store.showName()
-                return this.name
-            },
-        showEmail() {
-            this.email = this.store.showEmail()
-            return this.email
-        },
     },
     methods: {
         changeName(){

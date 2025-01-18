@@ -11,8 +11,8 @@
                 </div>
                 <div class="secondFlex2">
                     <router-link class="footerRouterLinkDec" to="/agenda">Agenda</router-link>
-                    <router-link class="footerRouterLinkDec" to="/berbigao">Patrocinadores</router-link>
-                    <router-link class="footerRouterLinkDec" to="/berbigao">FAQs</router-link>
+                    <router-link class="footerRouterLinkDec" to="/sobre">Patrocinadores</router-link>
+                    <router-link class="footerRouterLinkDec" to="/sobre">FAQs</router-link>
                     <router-link class="footerRouterLinkDec" to="/carrinho">Carrinho</router-link>
                 </div>
             </div>

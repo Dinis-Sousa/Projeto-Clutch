@@ -77,11 +77,13 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const usersStore = useUsersStore();
-  if(to.meta.isAuthenticated && usersStore.isAuthenticated === false){
+  if(to.meta.isAuthenticated && usersStore.isAuthenticated == false){
     next('/login')
-    } else {
-      next();
-    }
+  }
+  if(to.meta.isAdmin && usersStore.isAdmin == false){
+    next('/')
+  }  
+  next()
 })
 
 export default router

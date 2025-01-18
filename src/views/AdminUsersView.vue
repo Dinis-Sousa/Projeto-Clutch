@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="u in store1.users" :key="u.id">
+            <tr v-for="u in store.users" :key="u.id">
                 <td>{{ u.id }}</td>
                 <td>{{ u.name }}</td>
                 <td>{{ u.email }}</td>
@@ -38,22 +38,22 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="total" v-model="total">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="total" v-model="email">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Password</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="price" v-model="price">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="price" v-model="password">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">PriceTotal</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="price" v-model="price">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="price" v-model="priceTotal">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Carrinho</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="price" v-model="price">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="price" v-model="carrinho">
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">bloquado</label><br>
+            <label for="exampleFormControlInput1" class="form-label">bloquear</label><br>
             <button class="blockBtn" @click="BloquearUtilizador(id)">Bloquear</button>
         </div>
         <div class="mb-3">
@@ -64,13 +64,12 @@
             <label for="exampleFormControlInput1" class="form-label">Apagar Utilizador</label><br>
             <button class="blockBtn" @click="deleteUtilizador(id)">Apagar</button>
         </div>
-        <button class="btn btn-dark" @click="modifyTicket(id, name, total, price)">Edit</button>
+        <button class="btn btn-dark" @click="modifyUser(id, name, total, price)">Edit</button>
     </div>
     <MyFooter/>
 </template>
 
 <script>
-import { useTicketsStore } from '@/stores/tickets';
 import { useUsersStore } from '@/stores/users';
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
@@ -84,24 +83,23 @@ export default {
         return {
             id: 0,
             name: '',
-            total: 0,
-            price: 0,
-            store: useTicketsStore(),
-            store1: useUsersStore()
+            email: '',
+            priceTotal: 0,
+            store: useUsersStore()
         }
     },
     methods: {
-        modifyTicket(id, name, total, price) {
-            this.store.modifyTicket(id, name, total, price);
+        modifyUser(id, name, email, priceTotal) {
+            this.store.modifyUser(id, name, email, priceTotal);
         },
         BloquearUtilizador(id){
-            this.store1.blockUser(id);
+            this.store.blockUser(id);
         },
         darAdminUtilizador(id){
-            this.store1.darAdmin(id);
+            this.store.darAdmin(id);
         },
         deleteUtilizador(id){
-            this.store1.deleteUser(id);
+            this.store.deleteUser(id);
         },
     },
 

@@ -16,7 +16,49 @@
                que tu!</p>
         </div>
         <h1 id="jogosEmDestaque">Jogos em Destaque</h1>
-
+        <div class="gamesContainer">
+            <h1>{{ csH1 }}</h1>
+            <div class="gamesInner">
+                <iframe class="videoC" :src="csVideo" frameborder="0" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen controls >
+                </iframe>
+                <img :src="csIcon" alt="Icon Cs">
+            </div>
+        </div>
+        <div class="gamesContainer">
+            <h1>{{ valH1 }}</h1>
+            <div class="gamesInner">
+                <iframe class="videoC" :src="valVideo" frameborder="0" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen controls >
+                </iframe>
+                <img :src="valIcon" alt="Icon Cs">
+            </div>
+        </div>
+        <div class="gamesContainer">
+            <h1>{{ overH1 }}</h1>
+            <div class="gamesInner">
+                <iframe class="videoC" :src="overVideo" frameborder="0" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen controls >
+                </iframe>
+                <img :src="overIcon" alt="Icon Cs">
+            </div>
+        </div>
+        <div class="containerPublicoAlvo">
+            <h1>Público Alvo</h1>
+            <div class="eventPublicBorder">
+                <p>O público-alvo de um evento de gaming pode variar dependendo do foco do evento, mas geralmente inclui os seguintes segmentos principais:<br>
+                Jogadores Casuais<br>
+                Jogadores Profissionais<br>
+                Criadores de Conteúdo<br>
+                Famílias e Crianças<br>
+                Desenvolvedores e Indústria<br>
+                Investidores e Parceiros<br></p>
+                <img src="../assets/images/image 27.png" alt="">
+            </div>
+        </div>
         <MyFooter />
     </div>
 </template>
@@ -27,6 +69,22 @@ import MyFooter from '@/components/footer.vue'
 import { useJogosEmDestaqueStore } from '@/stores/jogosEmDestaque';
 
 export default {
+    setup(){
+        const store  = useJogosEmDestaqueStore()
+        const arrayCs = store.showCs
+        const csH1 = arrayCs[0]
+        const csVideo = arrayCs[1]
+        const csIcon = arrayCs[2]
+        const arrayVal = store.showVal
+        const valH1 = arrayVal[0]
+        const valVideo = arrayVal[1]
+        const valIcon = arrayVal[2]
+        const arrayOver = store.showOver
+        const overH1 = arrayOver[0]
+        const overVideo = arrayOver[1]
+        const overIcon = arrayOver[2]
+        return {csH1, csVideo, csIcon, valH1, valVideo, valIcon, overH1, overVideo, overIcon}
+    },
     components: {
         MyNavBar,
         MyFooter,
@@ -36,14 +94,6 @@ export default {
             store: useJogosEmDestaqueStore()
         }
     },
-    computed: {
-        showCs(){
-            showCs = this.store.showCs()
-            csH1 = showCs[0]
-            csVideo = showCs[1]
-            csIcon = showCs[2]
-        }
-    }
     
 }
 </script>
@@ -103,5 +153,68 @@ h1{
     transform: rotate(360deg);
     }
 }
+.videoC{
+    width: 48.2vw;
+    height: 36,5vh;
+}
+.gamesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 200px 0px;
+}
+.gamesContainer h1{
+    margin: 0px 0px 50px 100px;
+}
+.gamesInner{
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+    margin-left: 150px;
+}~
+.containerPublicoAlvo h1{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.eventPublicBorder{
+    position: relative;
+    width: 90vw;
+    height: 900px;
+    left:50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    padding:20px;
+    margin:100px 50px;
+    overflow: hidden;
+    border-radius: 24px;
+}
+.eventPublicBorder:before{
+    content: '';
+    position: absolute;
+    width: 10vw;
+    height: 300%;
+    background: linear-gradient(#007fc7, #2e2e91);
+    animation: rotate 4s linear infinite;               
+}
+.eventPublicBorder:after{
+    content: '';
+    position: absolute;
+    background: black;
+    inset: 10px;
+    border-radius: 24px;
+}
+.eventPublicBorder p{
+    z-index: 2;
+    font-size: 3rem;
+    font-weight: lighter;
+}
+.eventPublicBorder img{
+    z-index: 2;
+} 
 </style>
 <!-- #007fc7, #2e2e91 -->
