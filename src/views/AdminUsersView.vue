@@ -22,7 +22,7 @@
                 <td>{{ u.priceTotal }}</td>
                 <td>{{ u.carrinho }}</td>
                 <td>{{ u.blocked }}</td>
-                <td>{{ u.isAdmin }}</td>
+                <td>{{ u.isAdminUser }}</td>
 
             </tr>
         </tbody>
@@ -60,6 +60,10 @@
             <label for="exampleFormControlInput1" class="form-label">Admin</label><br>
             <button class="blockBtn" @click="darAdminUtilizador(id)">Admin</button>
         </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Apagar Utilizador</label><br>
+            <button class="blockBtn" @click="deleteUtilizador(id)">Apagar</button>
+        </div>
         <button class="btn btn-dark" @click="modifyTicket(id, name, total, price)">Edit</button>
     </div>
     <MyFooter/>
@@ -95,7 +99,10 @@ export default {
         },
         darAdminUtilizador(id){
             this.store1.darAdmin(id);
-        }
+        },
+        deleteUtilizador(id){
+            this.store1.deleteUser(id);
+        },
     },
 
 }

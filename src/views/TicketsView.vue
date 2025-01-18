@@ -15,8 +15,8 @@
             </div>
         </div>
     </div>
-    <router-link class="ticketsRouterLinkDec" to="/adminTickets" v-if="this.store1.isAdmin === true">Admin ticket</router-link>
-    <router-link class="usersRouterLinkDec" to="/adminUsers" v-if="this.store1.isAdmin === true">Users ticket</router-link>
+    <router-link class="ticketsRouterLinkDec" to="/adminTickets" v-if="this.store1.isAdmin == true">Admin ticket</router-link>
+    <router-link class="usersRouterLinkDec" to="/adminUsers" v-if="this.store1.isAdmin == true">Users ticket</router-link>
     <MyFooter />
 </template>
 

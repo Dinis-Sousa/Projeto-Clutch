@@ -11,6 +11,7 @@ export const useUsersStore = defineStore('users', {
                 email: 'admin@gmail.com',
                 password: '123456',
                 blocked: false,
+                isAdminUser: true,
             },
         ],
         AuthenticatedId: null,
@@ -33,21 +34,21 @@ export const useUsersStore = defineStore('users', {
             if(nameCheck){
                 const passCheck = nameCheck.password == password;
                 if(passCheck){
-                    this.isAuthenticated = true;
-                    this.AuthenticatedId = nameCheck.id
-                    localStorage.setItem('AuthenticatedId', nameCheck.id);
-                    this.AuthenticatedName = name
-                    localStorage.setItem('AuthenticatedName', name);
-                    this.AuthenticatedEmail = nameCheck.email
-                    localStorage.setItem('AuthenticatedEmail', nameCheck.email);
-                    this.AuthenticatedBilhetesComprados = nameCheck.bilhetesComprados
-                    localStorage.setItem('AuthenticatedBilhetesComprados', nameCheck.bilhetesComprados);
-                    this.AuthenticatedCarrinho = nameCheck.carrinho
-                    localStorage.setItem('AuthenticatedCarrinho', nameCheck.carrinho);
-                    if(nameCheck.isAdmin == true) {
-                        this.isAdmin = true
+                    if(nameCheck.blocked == true){
+                        alert('O ADMIN BLOQUEOU-TE KKKKKKKKK')
                     } else {
-                        this.isAdmin = false
+                        this.isAuthenticated = true;
+                        this.AuthenticatedId = nameCheck.id
+                        localStorage.setItem('AuthenticatedId', nameCheck.id);
+                        this.AuthenticatedName = name
+                        localStorage.setItem('AuthenticatedName', name);
+                        this.AuthenticatedEmail = nameCheck.email
+                        localStorage.setItem('AuthenticatedEmail', nameCheck.email);
+                        this.AuthenticatedBilhetesComprados = nameCheck.bilhetesComprados
+                        localStorage.setItem('AuthenticatedBilhetesComprados', nameCheck.bilhetesComprados);
+                        this.AuthenticatedCarrinho = nameCheck.carrinho
+                        console.log(nameCheck.isAdminUser)
+                        this.isAdmin = nameCheck.isAdminUser;
                     }
                 } else{
                     alert('Password incorreta')
@@ -117,7 +118,7 @@ export const useUsersStore = defineStore('users', {
                         priceTotal: 0,
                         carrinho: [],
                         blocked: false,
-                        isAdmin: false,
+                        isAdminUser: false,
                     }
                     this.users.push(user)
                     alert('Registado com sucesso!')
@@ -140,16 +141,19 @@ export const useUsersStore = defineStore('users', {
         darAdmin(idUser){
             const user = this.users.find(u => u.id == idUser)
             if (user) {
-                user.isAdmin = !user.isAdmin;
+                user.isAdminUser = !user.isAdminUser;
             }
         },
         deleteUser(idUser) {
-            this.users = this.users.filter(u => u.id !== idUser);
+            const user = this.users.findIndex(u => u.id == idUser)
+            if (user) {
+                this.users.splice(user,1)
+            }
         },
         
     },
     persist: {
-        enable: true,
+        enable: false,
         storage:localStorage,
     }
 });

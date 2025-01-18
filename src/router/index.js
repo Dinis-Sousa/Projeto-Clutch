@@ -12,7 +12,7 @@ const router = createRouter({
       path: '/tickets',
       name: 'tickets',
       component: () => import('../views/TicketsView.vue'),
-      meta: {isAuthenticated: true}
+      meta: {isAuthenticated: true, }
     },
     {
       path:'/adminTickets',
