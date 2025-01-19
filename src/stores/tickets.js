@@ -10,7 +10,8 @@ export const useTicketsStore = defineStore('tickets', {
                 total: 200,
                 available: 200,
                 price: 15,
-                profit: 0
+                profit: 0,
+                imgPath:'../src/assets/images/image 33.png'
             },
             {
                 id: 2,
@@ -18,7 +19,8 @@ export const useTicketsStore = defineStore('tickets', {
                 total: 200,
                 available: 200,
                 price: 15,
-                profit: 0
+                profit: 0,
+                imgPath:'../src/assets/images/image 23.png'
             },
             {
                 id: 3,
@@ -26,7 +28,8 @@ export const useTicketsStore = defineStore('tickets', {
                 total: 200,
                 available: 200,
                 price: 15,
-                profit: 0
+                profit: 0,
+                imgPath:'../src/assets/images/image 12.png'
             },
             {
                 id: 4,
@@ -34,7 +37,8 @@ export const useTicketsStore = defineStore('tickets', {
                 total: 200,
                 available: 200,
                 price: 35,
-                profit: 0
+                profit: 0,
+                imgPath:'../src/assets/images/image 13.png'
             },
             {
                 id: 5,
@@ -42,7 +46,9 @@ export const useTicketsStore = defineStore('tickets', {
                 total: 200,
                 available: 200,
                 price: 65,
-                profit: 0
+                profit: 0,
+                imgPath:'../src/assets/images/image 11.png',
+                imgVip: '../src/assets/images/image 34.png',
             }
         ]
     }),
@@ -64,6 +70,7 @@ export const useTicketsStore = defineStore('tickets', {
                             id : ticket.id,
                             name : ticket.name,
                             price : ticket.price,
+                            imgPath: ticket.imgPath,
                             number: 1
                         }
                         userToUpdate.carrinho.push(boughtTicket)

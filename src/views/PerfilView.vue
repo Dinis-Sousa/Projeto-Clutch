@@ -113,7 +113,7 @@ export default {
 .backgroundCoisoPerfil{
     width: 100vw;
     max-width: 100vw;
-    height: 620px;
+    height: 57.4vh;
     background-image: url('../assets/images/pngfind.com-linhas-png-5482397 3.png');
     background-repeat: no-repeat;
     background-size: cover;

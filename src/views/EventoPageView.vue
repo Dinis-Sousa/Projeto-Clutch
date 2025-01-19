@@ -26,15 +26,17 @@
                 <img :src="csIcon" alt="Icon Cs">
             </div>
         </div>
-        <div class="gamesContainer">
+        <div class="backgroundCoisoEvento">
+            <div class="gamesContainer">
             <h1>{{ valH1 }}</h1>
             <div class="gamesInner">
                 <iframe class="videoC" :src="valVideo" frameborder="0" 
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen controls >
                 </iframe>
-                <img :src="valIcon" alt="Icon Cs">
+                <img :src="valIcon" alt="Icon Val">
             </div>
+        </div>
         </div>
         <div class="gamesContainer">
             <h1>{{ overH1 }}</h1>
@@ -43,7 +45,7 @@
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen controls >
                 </iframe>
-                <img :src="overIcon" alt="Icon Cs">
+                <img :src="overIcon" alt="Icon Overwatch">
             </div>
         </div>
         <div class="containerPublicoAlvo">
@@ -56,7 +58,7 @@
                 Famílias e Crianças<br>
                 Desenvolvedores e Indústria<br>
                 Investidores e Parceiros<br></p>
-                <img src="../assets/images/image 27.png" alt="">
+                <img src="../assets/images/image 27.png" alt="image de Público">
             </div>
         </div>
         <MyFooter />
@@ -166,6 +168,16 @@ h1{
 .gamesContainer h1{
     margin: 0px 0px 50px 100px;
 }
+.backgroundCoisoEvento{
+    position: relative;
+    height:60vh;
+    background-image: url("../assets/images/pngfind.com-linhas-png-5482397 3.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 0% auto 50% auto;
+    z-index: -1;
+    color:white;
+}
 .gamesInner{
     display: flex;
     justify-content: space-around;
@@ -189,7 +201,7 @@ h1{
     align-items: center;
     background-color: rgba(0,0,0,0.5);
     padding:20px;
-    margin:100px 50px;
+    margin:100px 50px 100px 15px;
     overflow: hidden;
     border-radius: 24px;
 }
@@ -210,7 +222,7 @@ h1{
 }
 .eventPublicBorder p{
     z-index: 2;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: lighter;
 }
 .eventPublicBorder img{

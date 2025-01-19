@@ -4,19 +4,24 @@
         <h1 id="h1Carrinho">Carrinho</h1>
         <div class="centrarContainer">
             <div class="cadaBilheteComprado" v-for="ticket in eachCarrinho" :key="ticket.id">
-                <div class="cadaBilheteInfo">
-                    <h1>{{ticket.name}}</h1>
-                    <span v-if="ticket.id <= 3"> Tipo: Normal</span>
-                    <span v-if="ticket.id == 4"> Tipo: Geral </span>
-                    <span v-if="ticket.id == 5"> Tipo: VIP </span>
+                <div class="container1st">
+                    <img :src="ticket.imgPath" alt="imagem do bilhete">
                 </div>
-                <div class="cadaBilheteNumbers">
-                    <div class="btnContainer">    
-                        <button class="lowerBtn" @click="minusNumber(ticket.id)">-</button>
-                        <span>{{ ticket.number }}</span>
-                        <button class="upperBtn" @click="addNumber(ticket.id)">+</button>
+                <div class="container2nd">   
+                    <div class="cadaBilheteInfo">
+                        <h1>{{ticket.name}}</h1>
+                        <span v-if="ticket.id <= 3"> Tipo: Normal</span>
+                        <span v-if="ticket.id == 4"> Tipo: Geral </span>
+                        <span v-if="ticket.id == 5"> Tipo: VIP </span>
                     </div>
-                    <h1>{{ showEachTotalprice(ticket.price, ticket.number) }}€</h1>
+                    <div class="cadaBilheteNumbers">
+                        <div class="btnContainer">    
+                            <button class="lowerBtn" @click="minusNumber(ticket.id)">-</button>
+                            <span>{{ ticket.number }}</span>
+                            <button class="upperBtn" @click="addNumber(ticket.id)">+</button>
+                        </div>
+                        <h1>{{ showEachTotalprice(ticket.price, ticket.number) }}€</h1>
+                    </div>
                 </div>
             </div>   
                 <div class="containerFinalPrice">
@@ -101,7 +106,7 @@ import { useUsersStore } from '@/stores/users';
     height: 44vh;
     background-color: #2E2E91;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     margin:50px;
@@ -166,5 +171,16 @@ h1{
 .cadaBilheteNumbers h1{
     font-family: 'Host Grotesk';
     font-weight: bold;
+}
+.container2nd{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 20vh;
+    width: 36vw;
+}
+.container1st img{
+    width: 17vw;
+    height: 44vh;
 }
 </style>
