@@ -8,11 +8,16 @@
                     <img :src="ticket.imgPath" alt="imagem do bilhete">
                 </div>
                 <div class="container2nd">   
-                    <div class="cadaBilheteInfo">
-                        <h1>{{ticket.name}}</h1>
-                        <span v-if="ticket.id <= 3"> Tipo: Normal</span>
-                        <span v-if="ticket.id == 4"> Tipo: Geral </span>
-                        <span v-if="ticket.id == 5"> Tipo: VIP </span>
+                    <div class="cadaBilheteInfoContainer">
+                        <div class="cadaBilheteInfo">
+                            <h1>{{ticket.name}}</h1>
+                            <span v-if="ticket.id <= 3"> Tipo: Normal</span>
+                            <span v-if="ticket.id == 4"> Tipo: Geral </span>
+                            <span v-if="ticket.id == 5"> Tipo: VIP </span>
+                        </div>    
+                        <div class="deleteBtn">
+                            <button @click="apagarDoCarrinho(ticket.id)"><img src="../assets/images/image 35.png" alt="botao de apagar"></button>
+                        </div>
                     </div>
                     <div class="cadaBilheteNumbers">
                         <div class="btnContainer">    
@@ -40,6 +45,7 @@
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
 import { useUsersStore } from '@/stores/users';
+import { useTicketsStore } from '@/stores/tickets';
     export default {
         setup (){
             const store = useUsersStore();
@@ -55,6 +61,7 @@ import { useUsersStore } from '@/stores/users';
         data() {
             return {
                 store: useUsersStore(),
+                store1: useTicketsStore(),
             }
         },
         computed: {
@@ -65,9 +72,12 @@ import { useUsersStore } from '@/stores/users';
             }
         },
         methods:{
+            showEachTotalprice(price, number){
+                const total = price * number
+                return total
+            },
             addNumber(idTicket){
                 const eachCarrinho = this.store.CurrentAuthenticatedCarrinho
-                console.log(eachCarrinho)
                 const theTicket = eachCarrinho.find(c => c.id == idTicket)
                 if(theTicket){
                     theTicket.number ++
@@ -75,22 +85,38 @@ import { useUsersStore } from '@/stores/users';
                     const userToUpdate = this.store.users.find(u => u.id == storeId)
                     userToUpdate.priceTotal += theTicket.price 
                 }
-                showEachTotalprice(TheTicket.price, TheTicket.number)
+                this.showEachTotalprice(theTicket.price, theTicket.number)
             },
             minusNumber(idTicket){
                 const eachCarrinho = this.store.CurrentAuthenticatedCarrinho
                 const theTicket = eachCarrinho.find(c => c.id == idTicket)
                 if(theTicket){
-                    theTicket.number --
                     const storeId = this.store.AuthenticatedId 
                     const userToUpdate = this.store.users.find(u => u.id == storeId)
-                    userToUpdate.priceTotal -= theTicket.price 
+                    if(userToUpdate.priceTotal > 0){
+                        theTicket.number --
+                        userToUpdate.priceTotal -= theTicket.price 
+                    } else {
+                    theTicket.number = 0
+                    }
                 }
-                showEachTotalprice(TheTicket.price, TheTicket.number)
+                this.showEachTotalprice(theTicket.price, theTicket.number)
             },
-            showEachTotalprice(price, number){
-                const total = price * number
-                return total
+            apagarDoCarrinho(idTicket){
+                const eachCarrinho = this.store.CurrentAuthenticatedCarrinho
+                const theTicket = eachCarrinho.find(c => c.id == idTicket)
+                this.store1.apagarTicketdoCarrinho(idTicket)
+                const storeId = this.store.AuthenticatedId 
+                const userToUpdate = this.store.users.find(u => u.id == storeId)
+                if(userToUpdate.priceTotal > 0){
+                    const storeId = this.store.AuthenticatedId 
+                    const userToUpdate = this.store.users.find(u => u.id == storeId)
+                    userToUpdate.priceTotal -= this.showEachTotalprice(theTicket.price, theTicket.number)
+                    if(userToUpdate.priceTotal <= 0){
+                        theTicket.number = 0
+                    }
+                }
+                window.location.reload()     
             }
         }
 
@@ -182,5 +208,13 @@ h1{
 .container1st img{
     width: 17vw;
     height: 44vh;
+}
+.cadaBilheteInfoContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.deleteBtn button{
+    background: transparent;
+    border: 0px;
 }
 </style>

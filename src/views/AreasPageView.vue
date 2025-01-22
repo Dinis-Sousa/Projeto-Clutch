@@ -209,6 +209,7 @@ h1{
 .areaButtonContainer{
     display: flex;
     justify-content: center;
+    padding-top: 12vh;
 }
 .areaButton{
     border: 1px solid black;
@@ -237,7 +238,7 @@ h1{
 .backgroundCoisoAreas1{
     width: 99vw;
     max-width: 100vw;
-    height: 620px;
+    height: 60vh;
     background-image: url('../assets/images/pngfind.com-linhas-png-5482397 2.png');
     background-repeat: no-repeat;
     background-size: cover;

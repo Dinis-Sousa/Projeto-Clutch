@@ -18,12 +18,8 @@
             </div>
             <p class="cardText">{{ ticket.price }},00€</p>
             <button @click="buyTicket(ticket.id)" class="cardBtn">Comprar</button>
-            
         </div>
     </div>
-    
-    <router-link class="ticketsRouterLinkDec" to="/adminTickets" v-if="this.store1.isAdmin == true">Admin ticket</router-link>
-    <router-link class="usersRouterLinkDec" to="/adminUsers" v-if="this.store1.isAdmin == true">Admin Users</router-link>
     <MyFooter />
 </template>
 
@@ -31,9 +27,9 @@
 <script>
 import { useTicketsStore } from '@/stores/tickets';
 import {useUsersStore} from '@/stores/users';
-import {useRouter} from 'vue-router'
-import MyNavBar from '@/components/navbar.vue'
-import MyFooter from '@/components/footer.vue'
+import {useRouter} from 'vue-router';
+import MyNavBar from '@/components/navbar.vue';
+import MyFooter from '@/components/footer.vue';
 
 export default {
     components: {
@@ -76,22 +72,6 @@ h1{
 .logoutBtn{
     width:100px;
     height:50px;
-}
-.ticketsRouterLinkDec{
-    text-decoration: none;
-    color:white;
-    padding:20px;
-    border: 1px solid transparent;
-    border-radius:50px;
-    background-color: red;
-}
-.usersRouterLinkDec{
-    text-decoration: none;
-    color:white;
-    padding:20px;
-    border: 1px solid transparent;
-    border-radius:50px;
-    background-color: blue;
 }
 .BilhetesContainer{
     display: flex;

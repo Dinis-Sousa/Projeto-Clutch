@@ -75,7 +75,7 @@ export const useTicketsStore = defineStore('tickets', {
                         }
                         userToUpdate.carrinho.push(boughtTicket)
                     }
-                    userToUpdate.priceTotal = parseInt(userToUpdate.priceTotal) + parseFloat(ticket.price)
+                    userToUpdate.priceTotal = parseInt(userToUpdate.priceTotal) + parseInt(ticket.price)
                 }
             }
         },
@@ -89,7 +89,17 @@ export const useTicketsStore = defineStore('tickets', {
                 ticket.available = totalTicket;
             }
         },
-
+        apagarTicketdoCarrinho(idTicket){
+            const userStore = useUsersStore();
+            const storeId = userStore.AuthenticatedId 
+            const userToUpdate = userStore.users.find(u => u.id == storeId)
+            if (userToUpdate){
+                const theTicketToDelete = userToUpdate.carrinho.find(c => c.id == idTicket)
+                if (theTicketToDelete){
+                    userToUpdate.carrinho.splice(theTicketToDelete,1)
+                }
+            }
+        }
     },
     persist: {
         enabled: true,

@@ -7,7 +7,10 @@
                     <div class="containerFlex">    
                         <div class="perfilContainer">
                             <div class="perfilInner">
-                                <div class="perfilImg"></div>
+                                <div class="perfilImg">
+                                    <router-link class="ticketsRouterLinkDec" to="/adminTickets" v-if="this.store.isAdmin == true">Admin ticket</router-link>
+                                    <router-link class="usersRouterLinkDec" to="/adminUsers" v-if="this.store.isAdmin == true">Admin Users</router-link>
+                                </div>
                                 <div class="perfilInfo">
                                 <span>{{showName}}<br></span>
                                     <span>{{ showEmail }}<br></span>
@@ -136,7 +139,7 @@ export default {
 .perfilImg{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     height: 33vh;
     padding: 0px;
 }
@@ -222,5 +225,21 @@ export default {
 .cenasdoCarrinho button:hover{
     z-index: 0;
     box-shadow: 40px 0 100px #008cff, -40px 0 100px #e100ff ;
+}
+.ticketsRouterLinkDec{
+    text-decoration: none;
+    color:white;
+    padding:20px;
+    border: 1px solid transparent;
+    border-radius:50px;
+    background-color: red;
+}
+.usersRouterLinkDec{
+    text-decoration: none;
+    color:white;
+    padding:20px;
+    border: 1px solid transparent;
+    border-radius:50px;
+    background-color: blue;
 }
 </style>
