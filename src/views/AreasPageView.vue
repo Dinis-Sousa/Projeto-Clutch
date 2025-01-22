@@ -15,8 +15,8 @@
         </div>
         <div class="backgroundCoisoAreas">    
             <div class="areaJImages">
-                <div class="image3"></div>
                 <div class="image4"></div>
+                <div class="image3"></div>
             </div>
         </div>
         <h1>Área de Colecionáveis</h1>
@@ -130,68 +130,68 @@ h1{
     align-items: center;
     width: 99vw;
     max-width: 100vw;
-    height: 404px;
+    height: 37,4vh;
     position: relative;
 }
 .image1{
-    width: 720px;
-    height: 404px;
+    width: 37.5vw;
+    height: 37.4vh;
     background-image: url('../assets/images/image 14.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .image2{
-    width: 720px;
-    height: 404px;
+    width: 37.5vw;
+    height: 37.4vh;
     background-image: url('../assets/images/image 15.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .image3{
-    width: 720px;
-    height: 404px;
+    width: 37.5vw;
+    height: 37.4vh;
     background-image: url('../assets/images/image 2.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .image4{
-    width: 720px;
-    height: 404px;
+    width: 37.5vw;
+    height: 37.4vh;
     background-image: url('../assets/images/image 5.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .image5{
-    width: 720px;
-    height: 404px;
+    width: 37.5vw;
+    height: 37.4vh;
     background-image: url('../assets/images/image 15.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .image6{
-    width: 720px;
-    height: 404px;
+    width: 37.5vw;
+    height: 37.4vh;
     background-image: url('../assets/images/image 16.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .image7{
-    width: 720px;
-    height: 404px;
+    width: 37.5vw;
+    height: 37.4vh;
     background-image: url('../assets/images/image 18.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .image8{
-    width: 720px;
-    height: 404px;
+    width: 37.5vw;
+    height: 37.4vh;
     background-image: url('../assets/images/image 19.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .image9{
-    width: 1418px;
-    height: 649px;
+    width: 73.8vw;
+    height: 60vh;
     background-image: url('../assets/images/image 6.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -203,7 +203,7 @@ h1{
     align-items: center;
     width: 99vw;
     max-width: 100vw;
-    height: 649px;
+    height: 60vh;
     position: relative; 
 }
 .areaButtonContainer{
@@ -216,10 +216,10 @@ h1{
     background-color: white;
     color:black;
     border-radius: 100px;
-    margin: 300px 0px;
-    padding:16px;
-    width: 473px;
-    height: 144px;
+    margin: 27.7vh 0px;
+    padding:1.4vh 0.8vw 1.4vh 0.8vw;
+    width: 24.6vw;
+    height: 13.3vh;
     font-size: 1.8em;
     font-weight: lighter;
 }
@@ -230,10 +230,11 @@ h1{
 .backgroundCoisoAreas{
     width: 99vw;
     max-width: 100vw;
-    height: 620px;
+    height: 60vh;
     background-image: url('../assets/images/pngfind.com-linhas-png-5482397 3.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 .backgroundCoisoAreas1{
     width: 99vw;

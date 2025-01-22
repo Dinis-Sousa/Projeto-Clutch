@@ -17,8 +17,10 @@
                 <div class="backgroundCoisoTicekts" v-if="ticket.id == 4">
                     <img :src="ticket.imgPath" alt="imagem do bilhete">
                 </div>
+                <div class="bilheteVip">
+                    <img v-if="ticket.id == 5" id:="vipCoisa" :src="ticket.imgVip" alt="imagem do bilhete">
+                </div>
             </div>
-            <img v-if="ticket.id == 5" :src="ticket.imgPath" alt="imagem do bilhete">
             <p class="cardText">{{ ticket.price }},00€</p>
             <button @click="buyTicket(ticket.id)" class="cardBtn">Comprar</button>
         </div>
