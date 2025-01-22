@@ -111,12 +111,12 @@ import MyFooter from '@/components/footer.vue'
 
 <style lang="scss" scoped>
 .backgroundCoisoAgenda{
-    width: 99vw;
+    width: 99.3vw;
     max-width: 100vw;
-    height: 620px;
+    height: 60vh;
     background-image: url('../assets/images/pngfind.com-linhas-png-5482397 3.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,6 +128,7 @@ import MyFooter from '@/components/footer.vue'
     font-family: 'Orbitron';
     font-weight: bold;
     font-size: 5.5em;
+    padding-bottom: 12vh;
 }
 .dataContainer{
     width: 31vw;
@@ -138,7 +139,7 @@ import MyFooter from '@/components/footer.vue'
 
 }
 .dataContainer::before{
-    width: 7,8vw;
+    width: 7.8vw;
     height: 14vh;
 }
 .innerData{

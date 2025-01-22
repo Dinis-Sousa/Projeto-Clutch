@@ -153,7 +153,7 @@ export default {
 .perfilInfo span{
     border: 1px solid white;
     border-radius: 50px;
-    padding:20px;
+    padding: 1.8vh 1vw;
     font-weight: bold;
     font-size: 1.3em;
     text-align: center;
@@ -203,7 +203,7 @@ export default {
 .cenasdoCarrinho button{
     border: 1px solid transparent;
     border-radius: 50px;
-    padding:15px 40px;
+    padding:1.3vh 2vw;
     background-color: #161a20;
     color: white ;
     display: flex;
