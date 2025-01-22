@@ -23,6 +23,13 @@
         </div>
         <div class="backgroundCoisoSobre"></div>
         <h1 class="sobreFaqs">FAQ'S</h1>
+        <div class="FaqsContainer">
+            <div class="faqsContainerEach" v-for="faq in store1.faqs" :key="faq.id">
+                <img :src="faq.star" alt="star">
+                <h2>{{ faq.question }}</h2>
+                <img :src="faq.arrow" alt="arrow">
+            </div>
+        </div>
         <h1 class="sobreParceirosTitle"> Parceiros e Patrocinadores</h1>
         <div class="sobreParceirosContainer">
             <div class="sobreParceiros1stLine">
@@ -48,6 +55,7 @@
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
 import {useParceirosImgStore} from '@/stores/ParceirosImg'
+import { useFaqsStore } from '@/stores/faqs';
 
 export default {
     components: {
@@ -58,6 +66,7 @@ export default {
     data() {
         return {
             store: useParceirosImgStore(),
+            store1: useFaqsStore(),
         }
     },
     computed: {
@@ -185,10 +194,10 @@ h1{
 .backgroundCoisoSobre{
     position: relative;
     height:80vh;
+    width: 99vw;
     background-image: url("../assets/images/pngfind.com-linhas-png-5482397 3.png");
     background-repeat: no-repeat;
     background-size: 100% auto;
-    background-position: 0% 99vw 50% 99vw;
     z-index: 1;
     color:white;
 }
@@ -225,4 +234,29 @@ h1{
     width: 15vw;
     height: 18vh;
 }
-</style>
+.FaqsContainer{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #007FC7;
+    border-radius: 50px;
+    width: 73.8vw;
+    height: 58vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+}
+.faqsContainerEach{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:100%;
+    margin: 2vw 0vh;
+    color: #D9D9D9;
+}
+.faqsContainerEach h2{
+    width: 36vw;
+}
+</style> 
+<!-- #D9D9D9 -->

@@ -129,6 +129,7 @@ import { useTicketsStore } from '@/stores/tickets';
 }
 .cadaBilheteComprado{
     width: 53vw;
+    max-width: 53vw;
     height: 44vh;
     background-color: #2E2E91;
     display: flex;
@@ -149,13 +150,15 @@ h1{
 }
 .btnContainer{
     font-size: 30px;
+    display: flex;
+    gap: 0.75rem;
 }
 .btnContainer button{
     background-color: black;
     color:white;
     border-radius: 50%;
-    width: 3.5vw;
-    height: 7vh;
+    width: 2.5vw;
+    height: 5vh;
 }
 .containerFinalPrice{
     border-top: 1px solid #2E2E91;
@@ -212,6 +215,8 @@ h1{
 .cadaBilheteInfoContainer{
     display: flex;
     justify-content: space-between;
+    width:100%;
+    max-width: 80%;
 }
 .deleteBtn button{
     background: transparent;

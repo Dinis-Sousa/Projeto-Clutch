@@ -14,8 +14,11 @@
         <div class="BilhetesContainer" v-for="ticket in store.tickets.filter(ticket => ticket.id > 3)" :key="ticket.id">
             <h2 class="cardTitle">{{ ticket.name }}</h2>
             <div class="cadaBilheteItem">
-                <img :src="ticket.imgPath" alt="imagem do bilhete">
+                <div class="backgroundCoisoTicekts" v-if="ticket.id == 4">
+                    <img :src="ticket.imgPath" alt="imagem do bilhete">
+                </div>
             </div>
+            <img v-if="ticket.id == 5" :src="ticket.imgPath" alt="imagem do bilhete">
             <p class="cardText">{{ ticket.price }},00€</p>
             <button @click="buyTicket(ticket.id)" class="cardBtn">Comprar</button>
         </div>
@@ -80,10 +83,10 @@ h1{
     align-items: center;
 }
 .cadaBilheteItem{
-    padding:20px;
     background-color: transparent;
     border-radius:20px;
     backdrop-filter: blur(10px);
+    padding: 20px 0px;
 }
 .BilhetesContainer button{
     border-radius:50px;
@@ -100,16 +103,16 @@ h1{
 }
 .BilhetesContainer p{
     font-family: 'Host Grotesk';
-    font-weight: black;
+    font-weight: bold;
     font-size: 2em;
+}
+.BilhetesContainer img{
+    width: 20vw;
+    height: 60vh;
 }
 .cadaBilheteItem img{
     width: 20vw;
     height: 60vh;
-}
-.cadaBilheteItemS img{
-    width: 30vw;
-    height: 80vh;
 }
 .bilhetesContainerSpecial{
     margin:100px;
@@ -121,12 +124,15 @@ h1{
 .backgroundCoisoTicekts{
     position: relative;
     height:60vh;
+    max-height:60vh;
     width: 99vw;
     background-image: url("../assets/images/pngfind.com-linhas-png-5482397 3.png");
     background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: 0% auto 50% auto;
+    background-size: 100% 80%;
+    background-position: center bottom;
     z-index: -1;
     color:white;
+    display: flex;
+    justify-content: center;
 }
 </style>

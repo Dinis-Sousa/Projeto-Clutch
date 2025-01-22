@@ -10,8 +10,11 @@
         <li><router-link :class="{active: isSobrePage}" class="navRouterLinkDec" to="/sobre">Sobre</router-link></li>
         <li><router-link :class="{active: isPerfilPage}" class="navRouterLinkDec" to="/perfil">Perfil</router-link></li>
         </ul>
-        <router-link to="/login"><button :class="{active: isLoginPage}" class="navLoginBtn"  v-if="!store.isAuthenticated">Login</button></router-link>
-        <button class="navLogoutBtn" :class="{active: isLoginPage}" @click="LogOut" v-if="store.isAuthenticated">Logout</button>   
+            <div class="navbarBtns">   
+                <router-link to="/carrinho" :class="{active: isCarrinhoPage}" class="navRouterLinkDec"><button class="carrinhoBtn"><img class="carrinhBtnIcon" src="../assets/images/image 36.png" alt="carrinho"></button></router-link>
+                <router-link to="/login"><button :class="{active: isLoginPage}" class="navLoginBtn"  v-if="!store.isAuthenticated">Login</button></router-link>
+                <button class="navLogoutBtn" :class="{active: isLoginPage}" @click="LogOut" v-if="store.isAuthenticated">Logout</button>
+            </div>    
     </nav>
     
 </template>
@@ -47,6 +50,9 @@ import {useRouter} from 'vue-router';
             isPerfilPage(){
                 return this.$route.path === '/perfil';
             },
+            isCarrinhoPage(){
+                return this.$route.path === '/carrinho';
+            }
         },
         methods: {
             LogOut(){
@@ -123,10 +129,18 @@ body{
     font-family: 'Host-Grotesk';
     font-weight: bold;
 }
-.navLogoutBtn.active{
-    background-color: #2E2E91;
-    border: 1px solid transparent;
-    font-family: 'Host-Grotesk';
-    font-weight: bold;
+.navbarBtns{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 15vw;
+}
+.carrinhoBtn{
+    background: transparent;
+    border: 0px;
+}
+.carrinhBtnIcon{
+    width: 2.5vw;
+    height: 5vh;
 }
 </style>

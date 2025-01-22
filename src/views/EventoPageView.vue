@@ -19,10 +19,7 @@
         <div class="gamesContainer">
             <h1>{{ csH1 }}</h1>
             <div class="gamesInner">
-                <iframe class="videoC" :src="csVideo" frameborder="0" 
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen controls >
-                </iframe>
+                <iframe class="videoC" :src="csVideo" frameborder="0" allowfullscreen controls></iframe>
                 <img :src="csIcon" alt="Icon Cs">
             </div>
         </div>
@@ -30,21 +27,15 @@
             <div class="gamesContainer">
             <h1>{{ valH1 }}</h1>
             <div class="gamesInner">
-                <iframe class="videoC" :src="valVideo" frameborder="0" 
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen controls >
-                </iframe>
-                <img :src="valIcon" alt="Icon Val">
+                <iframe class="videoC" :src="valVideo" frameborder="0" allowfullscreen controls></iframe>
+                <img :src="valIcon" alt="Icon Valorant">
             </div>
         </div>
         </div>
         <div class="gamesContainer">
             <h1>{{ overH1 }}</h1>
             <div class="gamesInner">
-                <iframe class="videoC" :src="overVideo" frameborder="0" 
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen controls >
-                </iframe>
+                <iframe class="videoC" :src="overVideo" frameborder="0" allowfullscreen controls></iframe>
                 <img :src="overIcon" alt="Icon Overwatch">
             </div>
         </div>
@@ -156,8 +147,10 @@ h1{
     }
 }
 .videoC{
+    pointer-events: auto;
     width: 48.2vw;
-    height: 36,5vh;
+    height: 35vh;
+    z-index: 99;
 }
 .gamesContainer{
     display: flex;
@@ -175,7 +168,7 @@ h1{
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: 0% auto 50% auto;
-    z-index: -1;
+    z-index: 1;
     color:white;
 }
 .gamesInner{
@@ -183,7 +176,15 @@ h1{
     justify-content: space-around;
     width: 80vw;
     margin-left: 150px;
-}~
+}
+.gamesInner iframe{
+    width: 30vw;
+}
+.gamesInner img{
+    width: 100vw;
+    max-width: 15vw;
+    max-height: 30vh;
+}
 .containerPublicoAlvo h1{
     text-align: start;
     display: flex;

@@ -3,13 +3,13 @@ import { defineStore } from 'pinia';
 export const useJogosEmDestaqueStore = defineStore('JogosEmDestaque', {
     state: () => ({
         csH1: 'CS2',
-        csVideo: "https://www.youtube.com/watch?v=P22HqM9w500",
+        csVideo: "https://www.youtube.com/embed/P22HqM9w500?si=b-fC0EqcJhNPOs3_",
         csIcon: "../src/assets/images/cs2_icon 1.png",
         valH1: 'Valorant',
-        valVideo: "https://www.youtube.com/watch?v=DQqXOLPyWDU",
+        valVideo: "https://www.youtube.com/embed/hUYDTptHYCk?si=_KXw8EWyqjm3Npxp",
         valIcon: "../src/assets/images/valorant_icon 1.png",
         overH1: 'OverWatch 2',
-        overVideo: "https://www.youtube.com/watch?v=lkTHRdZzl1o",
+        overVideo: "https://www.youtube.com/embed/lkTHRdZzl1o?si=fULJmrHOHfoOVMMo",
         overIcon: "../src/assets/images/overwatch_icon 1.png"
         
     }),

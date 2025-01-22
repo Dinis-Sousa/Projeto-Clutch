@@ -96,7 +96,7 @@ export const useTicketsStore = defineStore('tickets', {
             if (userToUpdate){
                 const theTicketToDelete = userToUpdate.carrinho.find(c => c.id == idTicket)
                 if (theTicketToDelete){
-                    userToUpdate.carrinho.splice(theTicketToDelete,1)
+                    userToUpdate.carrinho = userToUpdate.carrinho.filter(c => c.id != idTicket)
                 }
             }
         }
