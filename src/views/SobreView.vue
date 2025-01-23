@@ -259,13 +259,13 @@ h1{
 }
 .faqsContainerEach ul .dropdown {
     display: none;
-    width:45%;
+    width: 36vw;
     position: absolute;
     margin: 2vw 0vh;
     color: #D9D9D9;
     text-align: start;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 2 ease-in-out;
 }
 .faqsContainerEach ul:hover{
     padding-bottom:5vh;
@@ -277,7 +277,7 @@ h1{
     color: white;
     font-weight: bold;
     opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 2s ease-in-out;
 }
 .faqsContainerEach ul .arrowCoiso{
     transition: transform 0.3s ease-in-out;
@@ -286,9 +286,13 @@ h1{
     transform: rotate(180deg) scale(2);
     transition: transform 0.3s ease-in-out;
 }
+.faqsContainerEach ul .starCoiso{
+    transition: transform 0.3s ease-in-out;
+}
 .faqsContainerEach ul:hover .starCoiso{
     transform: scale(1.2);
     transition: transform 0.3s ease-in-out;
 }
+
 </style> 
 <!-- #D9D9D9 -->
