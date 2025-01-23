@@ -15,7 +15,7 @@
         <div class="FaqsContainer">
             <div class="faqsContainerEach" v-for="faq in store1.faqs" :key="faq.id">
                 <ul>
-                    <li><img :src="faq.star" alt="star"></li>
+                    <li><img class="starCoiso" :src="faq.star" alt="star"></li>
                     <li class="question">
                         <h2>{{ faq.question }}</h2>
                         <ul class="dropdown">
@@ -233,7 +233,8 @@ h1{
     background-color: #007FC7;
     border-radius: 50px;
     width: 73.8vw;
-    height: 65vh;
+    height: 70vh;
+    padding-bottom:5vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -263,6 +264,8 @@ h1{
     margin: 2vw 0vh;
     color: #D9D9D9;
     text-align: start;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 .faqsContainerEach ul:hover{
     padding-bottom:5vh;
@@ -271,9 +274,18 @@ h1{
     display: flex;
     justify-content: start;
     text-align: start;
+    color: white;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 .faqsContainerEach ul:hover .arrowCoiso{
-    height: 8vh;
+    transform: rotate(180deg) scale(2);
+    transition: transform 0.3s ease;
+}
+.faqsContainerEach ul:hover .starCoiso{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
 }
 </style> 
 <!-- #D9D9D9 -->
