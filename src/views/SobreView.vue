@@ -277,15 +277,18 @@ h1{
     color: white;
     font-weight: bold;
     opacity: 1;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease-in-out;
+}
+.faqsContainerEach ul .arrowCoiso{
+    transition: transform 0.3s ease-in-out;
 }
 .faqsContainerEach ul:hover .arrowCoiso{
     transform: rotate(180deg) scale(2);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 .faqsContainerEach ul:hover .starCoiso{
     transform: scale(1.2);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 </style> 
 <!-- #D9D9D9 -->
