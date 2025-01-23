@@ -2,32 +2,28 @@
     <div>
         <MyNavBar />
         <h1>Destaques dos Convidados</h1>
-        <div class="containers">
-            <div class="zorlak"></div>
-            <div class="text Zorlak">
-                <p>Aos 32 anos, Ricardo Sousa — conhecido como “Zorlak” — fez valer os quase 20 anos ligados aos videojogos para se tornar streamer, aplicando os seus conhecimentos sobre o jogo Counter Strike num “projecto pioneiro a nível mundial” a partir da plataforma Twitch, destinada à transmissão de videojogos.</p>
-            </div>
-        </div>
-        <div class="containers Valorant">
-            <div class="valorant"></div>
-            <div class="text Valorant">
-                <p>Tomás ‘tomasyz’ Machado é um jogador profissional de valorant e neste momento considerado o melhor jogador de valorant português, atualmente joga na equipa GiantX.</p>
-            </div>
-        </div>
-        <div class="containersO">
-            <div class="overWatch"></div>
-            <div class="text OverWatch">
-                <p>  Félix ‘xQc’ Lengyel é um ex-jogador profissional de Overwatch, amplamente reconhecido como um dos melhores jogadores da história do jogo. 
-                    Atualmente, ele é um dos maiores streamers do mundo, mas seu legado no cenário competitivo de Overwatch permanece marcante.</p>
+        <div class="convidadosContainer" v-for="convidado in this.file" :key="convidado.id">
+            <div class="containers">
+                <div><img :src="convidado.image" alt="zorlak imagem"></div>
+                <div class="text Zorlak">
+                    <p>{{convidado.introduction}}</p>
+                </div>
             </div>
         </div>
         <div class="backgroundCoisoSobre"></div>
         <h1 class="sobreFaqs">FAQ'S</h1>
         <div class="FaqsContainer">
             <div class="faqsContainerEach" v-for="faq in store1.faqs" :key="faq.id">
-                <img :src="faq.star" alt="star">
-                <h2>{{ faq.question }}</h2>
-                <img :src="faq.arrow" alt="arrow">
+                <ul>
+                    <li><img :src="faq.star" alt="star"></li>
+                    <li class="question">
+                        <h2>{{ faq.question }}</h2>
+                        <ul class="dropdown">
+                            <li><h3>{{ faq.answer }}</h3></li>
+                        </ul>
+                    </li>
+                    <li><img class="arrowCoiso" :src="faq.arrow" alt="arrow"></li>
+                </ul>    
             </div>
         </div>
         <h1 class="sobreParceirosTitle"> Parceiros e Patrocinadores</h1>
@@ -56,6 +52,7 @@ import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
 import {useParceirosImgStore} from '@/stores/ParceirosImg'
 import { useFaqsStore } from '@/stores/faqs';
+import json from '@/api/db.json'
 
 export default {
     components: {
@@ -67,6 +64,7 @@ export default {
         return {
             store: useParceirosImgStore(),
             store1: useFaqsStore(),
+            file: json.convidados,
         }
     },
     computed: {
@@ -118,6 +116,10 @@ h1{
     align-items: center;
     margin: 50px 0px;
 }
+.containers img{
+    width: 20vw;
+    height: 60vh;
+}
 .containersO{
     height: 90vh;
     max-width: 100vw;
@@ -127,13 +129,6 @@ h1{
     justify-content: space-between;
     align-items: center;
     margin: 50px 0px 0px 0px;
-}
-.zorlak{
-    height: 50vh;
-    width: 344px;
-    background-image: url('../assets/images/image.png');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 .text{
     position: relative;
@@ -179,15 +174,13 @@ h1{
 }
 .valorant{
     height: 50vh;
-    width: 376px;
-    background-image: url('../assets/images/image (1).png');
+    width: 19.5vw;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .overWatch{
     height: 50vh;
-    width: 376px;
-    background-image: url('../assets/images/image 28.png');
+    width: 19.5vw;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -240,7 +233,7 @@ h1{
     background-color: #007FC7;
     border-radius: 50px;
     width: 73.8vw;
-    height: 58vh;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -248,15 +241,39 @@ h1{
     align-items: center;
 }
 .faqsContainerEach{
+    width:100%;
+}
+.faqsContainerEach ul{
+    list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width:100%;
     margin: 2vw 0vh;
     color: #D9D9D9;
+    position: relative;
 }
-.faqsContainerEach h2{
+.question h2{
     width: 36vw;
+}
+.faqsContainerEach ul .dropdown {
+    display: none;
+    width:45%;
+    position: absolute;
+    margin: 2vw 0vh;
+    color: #D9D9D9;
+    text-align: start;
+}
+.faqsContainerEach ul:hover{
+    padding-bottom:5vh;
+}
+.faqsContainerEach ul:hover .dropdown{
+    display: flex;
+    justify-content: start;
+    text-align: start;
+}
+.faqsContainerEach ul:hover .arrowCoiso{
+    height: 8vh;
 }
 </style> 
 <!-- #D9D9D9 -->
