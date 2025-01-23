@@ -1,9 +1,9 @@
 <template>
     <div class="popUpBackground">
         <div class="popUpInner">
-            <p>Registo efetuado com sucesso</p>
+            <p>O email que está a tentar usar já está associado a outra conta</p>
             <div class="popUpBtns">
-                <router-link to="/login"><button>Ok</button></router-link>
+                <router-link to="/login"><button>Tente Novamente</button></router-link>
             </div>
         </div>
     </div>
@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: "MyPopUpRegister",
+        name: "MyPopUpEmailExistente",
     }
 </script>
 

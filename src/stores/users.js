@@ -89,11 +89,13 @@ export const useUsersStore = defineStore('users', {
         addUser(name, email, password) {
             const nameCheck = this.users.find(u => u.name == name)
             if (nameCheck){
-                alert('Esse nome já está a ser usado')
+                const result = 'nome existente'
+                return result
             } else {
                 const emailCheck = this.users.find(u => u.email == email)
                 if (emailCheck){
-                    alert('Esse email já está a ser usado')
+                    const result = 'email existente'
+                    return result
                 } else {
                     const user = {
                         id: this.idUser(),
@@ -106,7 +108,8 @@ export const useUsersStore = defineStore('users', {
                         isAdminUser: false,
                     }
                     this.users.push(user)
-                    alert('Registado com sucesso!')
+                    const result = 'registado'
+                    return result
                 }
             }
         },

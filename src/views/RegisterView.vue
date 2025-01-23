@@ -13,6 +13,9 @@
                     <button type="submit">Registar</button>
                 </form>
         </div>
+        <MyPopUpRegister v-if="isNowRegistered"></MyPopUpRegister>
+        <MyPopUpNomeExistente v-if="nomeExistente"></MyPopUpNomeExistente>
+        <MyPopUpEmailExistente v-if="emailExistente"></MyPopUpEmailExistente>
         <MyFooter />
     </div>
 </template>
@@ -22,11 +25,17 @@ import { useUsersStore } from '@/stores/users';
 import {useRouter} from 'vue-router'
 import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
+import MyPopUpRegister from '@/components/PopUpRegister.vue'
+import MyPopUpNomeExistente from '@/components/PopUpNomeExistente.vue'
+import MyPopUpEmailExistente from '@/components/PopUpEmailExistente.vue'
 
 export default {
     components: {
         MyNavBar,
         MyFooter,
+        MyPopUpRegister,
+        MyPopUpNomeExistente,
+        MyPopUpEmailExistente,
     },
     data() {
         return {
@@ -35,12 +44,26 @@ export default {
             password: '',
             store: useUsersStore(),
             router: useRouter(),
+            isNowRegistered: false,
+            nomeExistente: false,
+            emailExistente: false,
         }
     },
     methods: {
         register(name, email, password){
-            this.store.addUser(name,email, password)
-            this.router.push('/login')
+            const resultado = this.store.addUser(name,email, password)
+            switch (resultado){
+                case 'nome existente':
+                    this.nomeExistente = !this.nomeExistente;
+                    break;
+                case 'email existente':
+                    this.emailExistente = !this.emailExistente;
+                    break;
+                case 'registado':
+                    console.log(this.isNowRegistered)
+                    this.isNowRegistered = !this.isNowRegistered;
+                    console.log(this.isNowRegistered)
+            }
         }
     }
 }
