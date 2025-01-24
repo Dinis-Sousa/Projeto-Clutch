@@ -2,11 +2,11 @@
     <div>
         <MyNavBar />
         <h1>Destaques dos Convidados</h1>
-        <div class="convidadosContainer" v-for="convidado in convidados" :key="convidado.id">
+        <div class="convidadosContainer" v-for="convidados in store2" :key="convidados.id">
             <div class="containers">
-                <div><img :src="convidado.image" alt="zorlak imagem"></div>
+                <div><img :src="convidados.image" alt="zorlak imagem"></div>
                 <div class="text Zorlak">
-                    <p>{{convidado.introduction}}</p>
+                    <p>{{convidados.introduction}}</p>
                 </div>
             </div>
         </div>
@@ -53,20 +53,6 @@ import MyFooter from '@/components/footer.vue'
 import {useParceirosImgStore} from '@/stores/ParceirosImg'
 import { useFaqsStore } from '@/stores/faqs';
 import { useConvidadosStore } from '@/stores/convidados';
-import { onMounted } from 'vue';
-
-onMounted(async () => {
-    const convidados = useConvidadosStore();
-    const fetchConvidadosData = async () => {
-        try {
-            await convidados.fetchConvidados();
-            console.log('Convidados fetched successfully');
-        } catch (error) {
-            console.error('Error fetching convidados:', error);
-        }
-    };
-    fetchConvidadosData();
-})
 
 export default {
     components: {
@@ -104,9 +90,20 @@ export default {
         },
         showImg8(){
             return this.store.showImg7()
-        }
-    }
-    
+        },
+    },
+    async created() {
+        const store2 = useConvidadosStore();
+        const convidados = [];
+            try {
+            await store2.fetchConvidados(); // Chama a ação fetchConvidaos() para obter os dados
+            convidados.push(store2.convidados)
+            console.log(convidados);
+            
+            } catch (error) {
+            console.error("Error fetching speakers:", error.message);
+            }
+        },  
 }
 </script>
 

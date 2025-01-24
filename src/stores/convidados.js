@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia';
-import {get} from '@/api/api.js'
+import { get } from '@/api/api.js'
 
 const apiBaseUrl = 'https://localhost:3000';
 const ENDPOINT = 'convidados';
 
 export const useConvidadosStore = defineStore('convidados', {
     state: () => ({
-        convidados: []
+        convidados: [],
         
     }),
     actions:{
@@ -18,8 +18,4 @@ export const useConvidadosStore = defineStore('convidados', {
             }
         }
     },
-    persist: {
-        enabled: true,
-        storage:localStorage
-    }
 })
