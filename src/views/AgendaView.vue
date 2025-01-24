@@ -111,7 +111,7 @@ import MyFooter from '@/components/footer.vue'
 
 <style lang="scss" scoped>
 .backgroundCoisoAgenda{
-    width: 99.3vw;
+    width: 99vw;
     max-width: 100vw;
     height: 60vh;
     background-image: url('../assets/images/pngfind.com-linhas-png-5482397 3.png');

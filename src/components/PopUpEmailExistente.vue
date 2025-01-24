@@ -33,6 +33,7 @@
 }
 .popUpInner{
     background-color: #333;
+    width: 30vw;
     border-radius: 50px;
     border: 1px solid transparent;
     display: flex;
@@ -48,7 +49,7 @@
 .popUpInner p{
     padding: 50px 100px 0px 100px;
     margin-bottom: 20px;
-    font-size: 50px;
+    font-size: 2em;
     font-weight: lighter;
     z-index:101;
 }

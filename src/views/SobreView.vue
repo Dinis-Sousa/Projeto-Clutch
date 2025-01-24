@@ -2,7 +2,7 @@
     <div>
         <MyNavBar />
         <h1>Destaques dos Convidados</h1>
-        <div class="convidadosContainer" v-for="convidado in this.file" :key="convidado.id">
+        <div class="convidadosContainer" v-for="convidado in convidados" :key="convidado.id">
             <div class="containers">
                 <div><img :src="convidado.image" alt="zorlak imagem"></div>
                 <div class="text Zorlak">
@@ -52,7 +52,21 @@ import MyNavBar from '@/components/navbar.vue'
 import MyFooter from '@/components/footer.vue'
 import {useParceirosImgStore} from '@/stores/ParceirosImg'
 import { useFaqsStore } from '@/stores/faqs';
-import json from '@/api/db.json'
+import { useConvidadosStore } from '@/stores/convidados';
+import { onMounted } from 'vue';
+
+onMounted(async () => {
+    const convidados = useConvidadosStore();
+    const fetchConvidadosData = async () => {
+        try {
+            await convidados.fetchConvidados();
+            console.log('Convidados fetched successfully');
+        } catch (error) {
+            console.error('Error fetching convidados:', error);
+        }
+    };
+    fetchConvidadosData();
+})
 
 export default {
     components: {
@@ -64,7 +78,6 @@ export default {
         return {
             store: useParceirosImgStore(),
             store1: useFaqsStore(),
-            file: json.convidados,
         }
     },
     computed: {
@@ -281,6 +294,7 @@ h1{
 }
 .faqsContainerEach ul .arrowCoiso{
     transition: transform 0.3s ease-in-out;
+    height: 5vh;
 }
 .faqsContainerEach ul:hover .arrowCoiso{
     transform: rotate(180deg) scale(2);
