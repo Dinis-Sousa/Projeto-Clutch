@@ -46,19 +46,24 @@ export const useUsersStore = defineStore('users', {
                 const passCheck = nameCheck.password == password;
                 if(passCheck){
                     if(nameCheck.blocked == true){
-                        alert('O ADMIN BLOQUEOU-TE KKKKKKKKK')
+                        const result = 'bloqueado'
+                        return result
                     } else {
                         this.isAuthenticated = true;
                         this.isAdmin = nameCheck.isAdminUser;
                         this.AuthenticatedId = nameCheck.id
                         localStorage.setItem('AuthenticatedId', nameCheck.id);
                         this.isAdmin = nameCheck.isAdminUser;
+                        const result = 'logado'
+                        return result
                     }
                 } else{
-                    alert('Password incorreta')
+                    const result = 'password incorreta'
+                        return result
                 }
             } else{
-                alert('Nome do Utilizador não existe!')
+                const result = 'nome inexistente'
+                        return result
             }
         },
         userChangeName(nome){

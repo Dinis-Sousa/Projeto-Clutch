@@ -14,6 +14,9 @@
         </div>
     </div>
     <Transition name="fade"><MyPopUpLogin v-if="isNowLoggedIn"></MyPopUpLogin></Transition>
+    <Transition name="fade"><MyPopUpBlock v-if="isBlocked"></MyPopUpBlock></Transition>
+    <Transition name="fade"><MyPopUpNomeErrado v-if="wrongName"></MyPopUpNomeErrado></Transition>
+    <Transition name="fade"><MyPopUpPassErrada v-if="wrongPass"></MyPopUpPassErrada></Transition>
     <MyFooter />
 </template>
 
@@ -23,12 +26,18 @@ import {useRouter} from 'vue-router'
 import MyNavBar from '@/components/navbar.vue';
 import MyFooter from '@/components/footer.vue';
 import MyPopUpLogin from '@/components/PopUpLogin.vue'
+import MyPopUpBlock from '@/components/PopUpBlock.vue'
+import MyPopUpNomeErrado from '@/components/PopUpNomeErrado.vue'
+import MyPopUpPassErrada from '@/components/PopUpPassErrada.vue'
 
 export default {
     components: {
         MyNavBar,
         MyFooter,
         MyPopUpLogin,
+        MyPopUpBlock,
+        MyPopUpNomeErrado,
+        MyPopUpPassErrada,
     },
     data() {
         return {
@@ -37,13 +46,27 @@ export default {
             store: useUsersStore(),
             router: useRouter(),
             isNowLoggedIn: false,
+            isBlocked: false,
+            wrongPass: false,
+            wrongName: false,
         }
     },
     methods: {
         submit(name, password) {
-            this.store.checkLogin(name, password);
-            if (this.store.isAuthenticated){
-                this.isNowLoggedIn = !this.isNowLoggedIn
+            const resultado = this.store.checkLogin(name, password);
+            switch (resultado) {
+                case 'bloqueado':
+                    this.isBlocked = !this.isBlocked;
+                    break;
+                case 'logado':
+                    this.isNowLoggedIn = !this.isNowLoggedIn;
+                    break;
+                case 'nome inexistente':
+                    this.wrongName = !this.wrongName;
+                    break;
+                case 'password incorreta':
+                    this.wrongPass = !this.wrongPass;
+                    break;
             }
         }
     }
